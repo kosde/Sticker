@@ -73,18 +73,94 @@ header {
 .first{
   background-color: #f97805;
   width: 100%;
-  height: 347px;
+  height: 328px;
 }
-
+.first_text{
+  background-color: #f97805;
+  width: 100%;
+  height: 133px;
+}
 .wrapper{
   text-align: left;
-  padding: 30px 0 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
-
+.wrapper_custom{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+}
+.title{
+  margin-bottom: 0;
+  color: white;
+  display: inline-block;
+  margin-right: 10px;
+  font-family: "proxima-nova","Helvetica Neue",helvetica,arial,sans-serif;
+  font-weight: bold;
+  padding: 0;
+  line-height: 100%;
+  font-size: 3.0rem;
+}
+.stars{
+  color: #f7d54e;
+}
 .slogan{
   max-width: 450px;
 }
-
+.ratings-wrapper{
+  position: relative;
+  top: -8px;
+  margin-bottom: 0;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+.rating-stars{
+  opacity: 1;
+  display: inline-block;
+  margin: 0;
+}
+.reviews-count a{
+  color: white;
+  display: inline-block;
+  margin-left: 4px;
+  line-height: 1;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  background-color: transparent;
+}
+.image-gallery-asym {
+  margin: 20px auto;
+}
+.image-gallery-asym > :nth-child(1) {
+  float: left;
+  width: 68.6%;
+  padding-right: 20px;
+  margin-bottom: 0;
+}
+.image-gallery-asym > :nth-child(1), .image-gallery-asym > :nth-child(2), .image-gallery-asym > :nth-child(3) {
+  display: block;
+}
+.image-gallery-asym > :nth-child(2) {
+  margin-left: 0;
+  margin-bottom: 20px;
+  width: 31.4%;
+}
+.image-gallery-asym > :nth-child(3) {
+  width: 31.4%;
+}
+.section-row{
+  padding: 30px 0;
+  margin: 0;
+}
+.center-text {
+  text-align: center;
+}
 .slogantxt{
   color: white;
   font-size: 3.6rem;
@@ -169,10 +245,60 @@ header {
 .mainimage{
   position: relative;
   padding-bottom: 0;
+  background-size: 400px auto;
+  background-position: 600px bottom;
+  background-repeat: no-repeat;
+  background-image: url("/assets/Mesa_de_trabajo.png");
+}
+.mainimage_custom{
+  position: relative;
+  padding-bottom: 0;
+  padding-right: 0px;
   background-size: 580px auto;
   background-position: 420px bottom;
   background-repeat: no-repeat;
-  background-image: url("/assets/homepage-main-image.png");
+  background-image: url("/assets/");
+}
+.Footer{
+  margin-top: auto;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 3em 0;
+  background-color: #f3f3f3;
+}
+.links{
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-basis: 50%;
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%;
+  margin-bottom: 35px;
+  margin-bottom: 16px;
+}
+.link{
+  margin: 0 30px 0 0;
+}
+.interactive{
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-basis: 50%;
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%;
+  margin-bottom: 0;
+}
+.legal{
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-flex-basis: 50%;
+  -ms-flex-preferred-size: 50%;
+  flex-basis: 50%;
+  text-align: right;
 }
 .products
 {
@@ -220,6 +346,9 @@ header {
   line-height: 1.6;
   margin: 0;
   text-align: center;
+}
+a.nav:hover{
+  background-color: #3e2012;
 }
 .video
 {
@@ -349,7 +478,7 @@ a {
 
 a:hover {
   color: #0056b3;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:not([href]):not([class]) {
@@ -550,7 +679,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 h1, .h1 {
-  font-size: 2.5rem;
+  font-size: 3.8rem;
 }
 
 h2, .h2 {
@@ -4535,6 +4664,7 @@ input[type="button"].btn-block {
 
 .navbar-brand:hover, .navbar-brand:focus {
   text-decoration: none;
+  
 }
 
 .navbar-nav {
@@ -4868,7 +4998,7 @@ input[type="button"].btn-block {
 }
 
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(24, 2, 2, 0.75);
 }
 
 .navbar-dark .navbar-nav .nav-link.disabled {
