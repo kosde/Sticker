@@ -170,7 +170,38 @@ header {
   margin: 0 0 10px 0;
   text-align: inherit;
 }
-
+.die_cut_stickers{
+  justify-content: space-between;
+  text-align: left;
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+}
+.bg-image{
+  height: 100%;
+  top: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+}
+.text-dark{
+  color: #202020;
+  padding: 0;
+}
+.title_cut{
+  color: #202020;
+  font-size: 2.3rem;
+}
+.front{
+  display: inline-block;
+  /*position: relative;*/
+  z-index: 1;
+  margin: 0;
+}
 .slogantx{
   color: white;
   font-family: "proxima-nova", "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -245,10 +276,10 @@ header {
 .mainimage{
   position: relative;
   padding-bottom: 0;
-  background-size: 400px auto;
-  background-position: 600px bottom;
+  background-size: 600px auto;
+  background-position: 430px bottom;
   background-repeat: no-repeat;
-  background-image: url("/assets/Mesa_de_trabajo.png");
+  background-image: url("/assets/Fondo1.png");
 }
 .mainimage_custom{
   position: relative;
@@ -321,6 +352,18 @@ header {
   grid-column-gap: 10px;
   grid-row-gap: 15px;
   margin: 0 auto;
+}
+.grid3{
+  grid-template-columns: auto auto auto;
+  max-width: 1000px;
+  display: grid;
+  grid-column-gap: 10px;
+  grid-row-gap: 15px;
+  margin: 0 auto;
+}
+.container_video{
+  width: 100%;
+  height: 328px;
 }
 .wrapperproducts{
   position: relative;
