@@ -1,9 +1,14 @@
+<?php
+//uso del arreglo $_SESSION
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta content="text/html, charset=utf-8" http-equiv="Content-Type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticker Mule | Custom stickers that kick ass</title> 
+    <title>Acme Sticker | Custom stickers that kick ass</title> 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <script src="https://kit.fontawesome.com/a38c16a07e.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -21,7 +26,7 @@
                 </button>
             </div>
             <!-- End Header Navigation -->
-            <a href="index.html" class="navbar-brand d-flex" style="padding-top: 5px;">
+            <a href="index.php" class="navbar-brand d-flex" style="padding-top: 5px;">
                 <img src="/assets/silueta1.png" width="30" height="25">
                 <!--<i class="fab fa-sticker-mule fa-sm"
                     
@@ -49,13 +54,13 @@
                     </nav>
                     
                     style="padding-top: 5px;"></i>-->
-                <h4 style="color: #ffffff;" class="dt">Acme</h4>
+                <h4 style="color: #582707;" class="dt">Acme</h4>
                 <h4 style="color: #f26922;" class="dt">Stickers</h4>
             </a>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="text-muted nav-link" href="#">Stickers</a></li> 
+                    <li><a class="nav-link"style="color: #582707;" href="#">Stickers</a></li> 
                     <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Tutorials</a>
                         <ul class="dropdown-menu">
@@ -83,10 +88,21 @@
             </div><!-- /.navbar-collapse -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex:0.5;">
                 <ul class="navbar-nav mr-auto">
-                    <li><i class="nav-link text-muted fas fa-shopping-cart"></i></li>
-                            <li><a class="nav-link text-muted pl-4" style="padding-right: 1.0rem;" href="/login.html">Log in</a></li>
-                            <li><a class=" nav-link text-muted pl-4" style="padding-right: 1.0rem;" href="/signup.html">Sign up</a></li>
-
+                    <li><a href="/cart.php"><i  class="nav-link fas fa-shopping-cart" style="color: #582707;"></i></a></li>
+                    <?php
+                        if(!isset($_SESSION['Fullname']))  //no esta autenticado
+                        {
+                        ?>
+                            <li><a class="nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/login.php">Log in</a></li>
+                            <li><a class=" nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/signup.php">Sign up</a></li>
+                        <?php
+                        }else   //si esta autenticado
+                        {
+                                echo "<li> <a class='nav-link text-muted pl-4' style='padding-right: 1.0rem;'>" . $_SESSION['Fullname'] . "</a> </li>
+                                      <li> <a class='nav-link pl-4' style='padding-right: 1.0rem;' href='logout.php'>Log out</a></li>";                        
+                        }
+                    ?>
+                    
                     <!-- <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Tutorials</a>
                         <ul class="dropdown-menu">
@@ -131,14 +147,14 @@
             <div class="mainimage container">
                 <div class="wrapper">
                     <div class="slogan">
-                        <h1 class="slogantxt">Custom stickers that kick ass</h1>
+                        <h1 class="slogantxt">Custom Stickers Delivered to your Doorsteps</h1>
                     </div>
                     <div class="sub">
                         <p class="regular2">Easy online ordering, 4 day turnaround and free online proofs. Free shipping.</p>
                     </div>
                     <div class="buttons-2 buttons">
-                        <a class="buttons-xl button secondary large" href="#"><div class="content">Shop now</div></a>
-                        <a class="buttons-xl button primary large pr-4" href="#"><div class="content">Get samples</div></a>
+                        <a class="button secondary large" href="#"><div class="content">Order now</div></a>
+                        <a class="button primary large pr-4" href="#"><div class="content">Samples</div></a>
                     </div>
                 </div>
                 
@@ -278,6 +294,7 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="js/bootsnav/bootsnav.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
 
