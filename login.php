@@ -8,127 +8,41 @@
     <script src="https://kit.fontawesome.com/a38c16a07e.js"></script>
 </head>
 <body style="background-color: #f97805;">
-<nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">      
-            <!-- Start Atribute Navigation -->
-                  
-            <!-- End Atribute Navigation -->
-            <!-- Start Header Navigation -->
             <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="text-muted fa fa-bars"></i>
                 </button>
             </div>
-            <!-- End Header Navigation -->
             <a href="index.php" class="navbar-brand d-flex" style="padding-top: 5px;">
                 <img src="/assets/silueta1.png" width="30" height="25">
-                <!--<i class="fab fa-sticker-mule fa-sm"
-                    
-                    <nav data-testid="Navigation" role="navigation" class="jsx-4236489376 ">
-                        <ul class="jsx-4236489376">
-                            <li class="jsx-4236489376">
-                                <a href="/custom-stickers" class="jsx-1693562597 HeaderNavItem">Stickers</a>
-                            </li>
-                            <li class="jsx-4236489376">
-                                <a href="/custom-labels" class="jsx-1693562597 HeaderNavItem">Labels</a>
-                            </li>
-                            <li class="jsx-4236489376">
-                                <a href="/products/custom-magnets" class="jsx-1693562597 HeaderNavItem">Magnets</a>
-                            </li>
-                            <li class="jsx-4236489376">
-                                <a href="/custom-buttons" class="jsx-1693562597 HeaderNavItem">Buttons</a>
-                            </li>
-                            <li class="jsx-4236489376">
-                                <a href="/custom-packaging" class="jsx-1693562597 HeaderNavItem">Packaging</a>
-                            </li>
-                            <li class="jsx-4236489376">
-                                <a href="/more" class="jsx-1693562597 HeaderNavItem">More</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    
-                    style="padding-top: 5px;"></i>-->
-                <h4 style="color: #ffffff;" class="dt">Acme</h4>
+                <h4 style="color: #582707;" class="dt">Acme</h4>
                 <h4 style="color: #f26922;" class="dt">Stickers</h4>
             </a>
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="text-muted nav-link" href="#">Stickers</a></li> 
-                    <!-- <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Tutorials</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">jQuery</a></li>
-                            <li><a href="#">jQuery UI</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Bootstrap</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Forms</a></li>
-                                    <li><a href="#">Carousel</a></li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Carousel Types</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Multi-item</a></li>
-                                            <li><a href="#">Product Carousel</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Tables</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">JavaScript</a></li>
-                        </ul>
-                    </li> -->
+                    <li><a class="nav-link"style="color: #582707;" href="#">Stickers</a></li> 
                 </ul>
-            </div><!-- /.navbar-collapse -->
+            </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex:0.5;">
                 <ul class="navbar-nav mr-auto">
-                    <li><i class="nav-link text-muted fas fa-shopping-cart"></i></li>
+                    <li><a href="/cart.php"><i  class="nav-link fas fa-shopping-cart" style="color: #582707;"></i></a></li>
                     <?php
-                        if(!isset($_SESSION['nombre']))  //no esta autenticado
+                        if(!isset($_SESSION['Fullname']))
                         {
                         ?>
-                            <li><a class="nav-link text-muted pl-4" style="padding-right: 1.0rem;" href="/login.php">Log in</a></li>
-                            <li><a class=" nav-link text-muted pl-4" style="padding-right: 1.0rem;" href="/signup.php">Sign up</a></li>
+                            <li><a class="nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/login.php">Log in</a></li>
+                            <li><a class=" nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/signup.php">Sign up</a></li>
                         <?php
-                        }else   //si esta autenticado
+                        }else
                         {
-                                echo "<li> <a class='nav-link text-muted pl-4' style='padding-right: 1.0rem;'>" . $_SESSION['nombre'] . "</a> </li>
+                                echo "<li> <a class='nav-link text-muted pl-4' style='padding-right: 1.0rem;'>" . $_SESSION['Fullname'] . "</a> </li>
                                       <li> <a class='nav-link pl-4' style='padding-right: 1.0rem;' href='logout.php'>Log out</a></li>";                        
                         }
                     ?>
-                    
-                    <!-- <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Tutorials</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">jQuery</a></li>
-                            <li><a href="#">jQuery UI</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Bootstrap</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Forms</a></li>
-                                    <li><a href="#">Carousel</a></li>
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Carousel Types</a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#">Multi-item</a></li>
-                                            <li><a href="#">Product Carousel</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Tables</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">JavaScript</a></li>
-                        </ul>
-                    </li> -->
                 </ul>
             </div>
-            <!--<div class="attr-nav">
-                    <ul class="navbar-nav mr-auto">
-                        <i class="fas fa-shopping-cart fa-sm collapse navbar-collapse"></i>
-                        <li><a class="text-muted pl-4" href="#">Log in</a></li>
-                        <li><a class="text-muted pl-4" href="/signup.html">Sign up</a></li>
-                    </ul>
-            </div> -->
             <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="text-muted fas fa-shopping-cart"></i>
