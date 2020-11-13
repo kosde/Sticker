@@ -21,20 +21,56 @@ session_start();
                 </button>
             </div>
             <a href="index.php" class="navbar-brand d-flex" style="padding-top: 5px;">
-                <img src="/assets/silueta1.png" width="30" height="25">
+                <img src="/assets/Logo_2.png" width="30" height="25">
                 <h4 style="color: #582707;" class="dt">Acme</h4>
                 <h4 style="color: #f26922;" class="dt">Stickers</h4>
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link"style="color: #582707;" href="#">Stickers</a></li> 
+                    <li><a class="nav-link"style="color: #582707;" href="custom-stickers.php">Stickers</a></li> 
                 </ul>
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex:0.5;">
                 <ul class="navbar-nav mr-auto">
                     <li><a href="/cart.php"><i  class="nav-link fas fa-shopping-cart" style="color: #582707;"></i></a></li>
+                    <!--<li class="nav-item dropdown">
+                        <div class="AccountLinks">
+                            <div class="wrapper">
+                            <a class="nav-link dropdown-toggle toggle HeaderNavItem" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                                <img alt="" data-testid="AccountMenuAvatar" src="" srcset="" class="avatar small">
+                            </a>
+                            <div class="dropdown-menu flyout" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item userItem account" href="#">
+                                        <span class="userAvatar">
+                                            <img alt="" data-testid="MenuAvatar" src="" srcset="" class="avatarB medium">
+                                        </span>
+                                        <span class="userDetails">
+                                            <p class="itemText">
+                                                <strong id="username"></strong>
+                                            </p>
+                                            <p class="itemText userEmail" id=useremail></p>
+                                            <p class="itemText highlight">Account</p>
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                        <a href="/account/orders" class="dropdown-item">
+                                            <span class="">Orders</span>
+                                        </a>
+                                        <a href="/account/reorder" class="dropdown-item">
+                                            <span class="">Reorder</span>
+                                        </a>
+                                        <a href="/account/invite" class="dropdown-item">
+                                            <span class="">Get $10 credit</span>
+                                        </a>
+                                        <a href="/logout" class="dropdown-item">
+                                            <span class="">Log out</span>
+                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>-->
                     <?php
-                        if(!isset($_SESSION['Fullname']))
+                        if(!isset($_SESSION['id']))
                         {
                         ?>
                             <li><a class="nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/login.php">Log in</a></li>
@@ -42,8 +78,46 @@ session_start();
                         <?php
                         }else
                         {
-                                echo "<li> <a class='nav-link text-muted pl-4' style='padding-right: 1.0rem;'>" . $_SESSION['Fullname'] . "</a> </li>
-                                      <li> <a class='nav-link pl-4' style='padding-right: 1.0rem;' href='logout.php'>Log out</a></li>";                        
+                            /*
+                            <li> <a class='nav-link text-muted pl-4' style='padding-right: 1.0rem;'>" . $_SESSION['Fullname'] . "</a> </li>
+                                      <li> <a class='nav-link pl-4' style='padding-right: 1.0rem;' href='logout.php'>Log out</a></li>" 
+                            */ 
+                                echo "<li class='nav-item dropdown'>
+                                        <div class='AccountLinks'>
+                                            <div class='wrapper' style='padding:0px;' >
+                                            <a class='nav-link dropdown-toggle toggle HeaderNavItem' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> 
+                                                <img alt='' data-testid='AccountMenuAvatar' src='". $_SESSION['image'] ."' srcset='' class='avatar small'>
+                                            </a>
+                                            <div class='dropdown-menu flyout' aria-labelledby='navbarDropdown'>
+                                                <a class='dropdown-item userItem account' href='#'>
+                                                    <span class='userAvatar'>
+                                                        <img alt='' data-testid='MenuAvatar' src='". $_SESSION['image'] ."' srcset='' class='avatarB medium'>
+                                                    </span>
+                                                    <span class='userDetails'>
+                                                        <p class='itemText'>
+                                                            <strong id='username'>". $_SESSION['name'] ."</strong>
+                                                        </p>
+                                                        <p class='itemText userEmail' id=useremail>". $_SESSION['email'] ."</p>
+                                                        <p class='itemText highlight'>Account</p>
+                                                    </span>
+                                                </a>
+                                                <div class='dropdown-divider'></div>
+                                                    <a href='/account/orders' class='dropdown-item'>
+                                                        <span class=''>Orders</span>
+                                                    </a>
+                                                    <a href='/account/reorder' class='dropdown-item'>
+                                                        <span class=''>Reorder</span>
+                                                    </a>
+                                                    <a href='/account/invite' class='dropdown-item'>
+                                                        <span class=''>Get $10 credit</span>
+                                                    </a>
+                                                    <a href='/logout' class='dropdown-item'>
+                                                        <span class=''>Log out</span>
+                                                    </a>;
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>     ";              
                         }
                     ?>
                 </ul>
@@ -66,8 +140,8 @@ session_start();
                         <p class="regular2">Easy online ordering, 4 day turnaround and free online proofs. Free shipping.</p>
                     </div>
                     <div class="buttons-2 buttons">
-                        <a class="button secondary large" href="#"><div class="content">Order now</div></a>
-                        <a class="button primary large pr-4" href="#"><div class="content">Samples</div></a>
+                        <a class="button secondary large" href="custom-stickers.php"><div class="content">Order now</div></a>
+                        <a class="button primary large pr-4" href="samples.php"><div class="content">Samples</div></a>
                     </div>
                 </div>
                 
@@ -78,25 +152,25 @@ session_start();
                 <div class="wrapper">
                     <div class="grid3">
                         <div class="wrapperproducts">
-                            <a href="/custom-stickers.html">
+                            <a href="/custom-stickers.php">
                             <div class="image">
-                                <img src="/assets/Diecut.png" srcset="" width="200">
+                                <img src="/assets/Die cut stickers.png" srcset="" width="200">
                             </div>
                                 <p class="regular">DIE CUT STICKERS</p>
                             </a>
                         </div>
                         <div class="wrapperproducts">
-                            <a href="/custom-stickers.html">
+                            <a href="/custom-stickers.php">
                             <div class="image">
-                                <img src="/assets/Circle.png" srcset="" width="200">
+                                <img src="/assets/Circle stickers.png" srcset="" width="200">
                             </div>
                                 <p class="regular">CIRCLE STICKERS</p>
                             </a>
                         </div>
                         <div class="wrapperproducts">
-                            <a href="/custom-stickers.html">
+                            <a href="/custom-stickers.php">
                             <div class="image">
-                                <img src="/assets/Rectangle_stickers.png" srcset="" width="200">
+                                <img src="/assets/Rectangle stickers.png" srcset="" width="200">
                             </div>
                                 <p class="regular">RECTANGLE STICKERS</p>
                             </a>

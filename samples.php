@@ -1,14 +1,18 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta content="text/html, charset=utf-8" http-equiv="Content-Type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticker Mule | Custom stickers that kick ass</title> 
+    <title>Acme Sticker | Custom stickers that kick ass</title> 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <script src="https://kit.fontawesome.com/a38c16a07e.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
-    
     <nav class="navbar navbar-expand-lg">
         <div class="container">      
             <div class="navbar-header">
@@ -29,42 +33,6 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex:0.5;">
                 <ul class="navbar-nav mr-auto">
                     <li><a href="/cart.php"><i  class="nav-link fas fa-shopping-cart" style="color: #582707;"></i></a></li>
-                    <!--<li class="nav-item dropdown">
-                        <div class="AccountLinks">
-                            <div class="wrapper">
-                            <a class="nav-link dropdown-toggle toggle HeaderNavItem" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                                <img alt="" data-testid="AccountMenuAvatar" src="" srcset="" class="avatar small">
-                            </a>
-                            <div class="dropdown-menu flyout" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item userItem account" href="#">
-                                        <span class="userAvatar">
-                                            <img alt="" data-testid="MenuAvatar" src="" srcset="" class="avatarB medium">
-                                        </span>
-                                        <span class="userDetails">
-                                            <p class="itemText">
-                                                <strong id="username"></strong>
-                                            </p>
-                                            <p class="itemText userEmail" id=useremail></p>
-                                            <p class="itemText highlight">Account</p>
-                                        </span>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                        <a href="/account/orders" class="dropdown-item">
-                                            <span class="">Orders</span>
-                                        </a>
-                                        <a href="/account/reorder" class="dropdown-item">
-                                            <span class="">Reorder</span>
-                                        </a>
-                                        <a href="/account/invite" class="dropdown-item">
-                                            <span class="">Get $10 credit</span>
-                                        </a>
-                                        <a href="/logout" class="dropdown-item">
-                                            <span class="">Log out</span>
-                                        </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>-->
                     <?php
                         if(!isset($_SESSION['id']))
                         {
@@ -74,10 +42,6 @@
                         <?php
                         }else
                         {
-                            /*
-                            <li> <a class='nav-link text-muted pl-4' style='padding-right: 1.0rem;'>" . $_SESSION['Fullname'] . "</a> </li>
-                                      <li> <a class='nav-link pl-4' style='padding-right: 1.0rem;' href='logout.php'>Log out</a></li>" 
-                            */ 
                                 echo "<li class='nav-item dropdown'>
                                         <div class='AccountLinks'>
                                             <div class='wrapper' style='padding:0px;' >
@@ -126,28 +90,26 @@
         </div>   
     </nav>
     <main>
-        <section class="first_text">
-            <div class="mainimage_custom container">
-                <div class="wrapper_custom">
-                    <h1 class="title">Custom stickers</h1>
-                    <span class="ratings-wrapper">
-                        <span class="rating-stars">
-                            <i class="fa fa-star stars"></i>
-                            <i class="fa fa-star stars"></i>
-                            <i class="fa fa-star stars"></i>
-                            <i class="fa fa-star stars"></i>
-                            <i class="fa fa-star stars"></i>
-                        </span>
-                        <span class="reviews-count">
-                            <a href="#reviews">81,765 reviews</a>
-                        </span>
-                    </span>
+        <section class="first">
+            <div class="mainimage container">
+                <div class="wrapper">
+                    <div class="slogan">
+                        <h1 class="slogantxt">Sample pack for $1</h1>
+                    </div>
+                    <div class="sub">
+                        <p class="regular2">Each pack contains stickers, labels, magnets and a transfer sticker. Free shipping.</p>
+                    </div>
+                    <div class="buttons-2 buttons">
+                        <a class="button secondary large" href="custom-stickers.php"><div class="content">Add to cart</div></a>
+                    </div>
                 </div>
+                
             </div>
         </section>
         <section class="products">
             <div class="container">
                 <div class="wrapper">
+                    <h2 style="text-align: center; padding-bottom: 30px;">Or, get custom samples using your artwork.</h2>
                     <div class="grid3">
 
                         <div class="wrapperproducts">
@@ -242,6 +204,36 @@
                         <img class="embed-responsive-item" src="/assets/poster.jpg" alt="">
                         <iframe class="embed-responsive-item" poster="/assets/poster.jpg" src="" allowfullscreen></iframe>
                       </div>
+                   <!-- <div class="jsx-1954592401 ">
+                        <div class="jsx-1954592401 wistia_responsive_padding">
+                            <div class="jsx-1954592401 wistia_responsive_wrapper">
+                                <div id="wistia_chrome_24" class="w-chrome" style="display: inline-block; height: 270px; line-height: normal; margin: 0px; padding: 0px; position: relative; vertical-align: top; width: 480px; outline: currentcolor none medium; overflow: hidden; box-sizing: content-box;" tabindex="-1">
+                                    <div id="wistia_grid_30_wrapper" style="display: block; width: 480px; height: 270px;">
+                                        <div id="wistia_grid_30_main" style="width: 480px; left: 0px; height: 270px; margin-top: 0px;">
+                                            <div id="wistia_grid_30_center" style="width: 100%; height: 100%;">
+                                                <div class="w-ui-container" style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; opacity: 1;">
+                                                    <div class="w-vulcan-v2 w-css-reset" id="w-vulcan-v2-29" style="box-sizing: border-box; cursor: default; height: 100%; left: 0px; position: absolute; visibility: visible; top: 0px; width: 100%;">
+                                                        <div class="w-vulcan--background w-css-reset" style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
+                                                            <div class="w-css-reset" data-handle="thumbnail">
+                                                                <div>
+                                                                    <div style="height: 100%; left: 0px; opacity: 1; position: absolute; top: 0px; width: 100%; display: block;" class="w-css-reset">
+                                                                        <img class="w-css-reset" srcset="https://embedwistia-a.akamaihd.net/deliveries/c070d424987be2245e9ddb5f8aefd13f4a2d8e44.webp?image_crop_resized=600x338 320w"
+                                                                        src="https://embedwistia-a.akamaihd.net/deliveries/c070d424987be2245e9ddb5f8aefd13f4a2d8e44.webp?image_crop_resized=600x338"
+                                                                            style="height: 270px; left: 0px; position: absolute; top: 0px; width: 480px; clip: auto; display: block; border-color: rgb(0, 0, 0); 
+                                                                            border-style: solid; border-width: 0px; box-sizing: content-box;" alt="Video Thumbnail">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>-->
                 </div>
            <div class="contentVideo">
                <h2 class="videoTitle">Free shipping, free online proofs, fast turnaround.</h2>
@@ -252,19 +244,7 @@
             </div>
         </div>
         </section>
-        <section class="section-row container">
-            <div class="wrapper center-text">
-              <h2>Durable, weather resistant vinyl stickers</h2>
-              <p></p><p>Print custom stickers in any shape or size on premium vinyl. Don't stress about quality and durability. Our custom stickers feature a special laminate that protects them from exposure to wind, rain and sunlight. You can even put them in your dishwasher and have them come out looking brand new.</p>
-                <p></p>
-              <div class="image-gallery-asym">
-                    <img alt="Custom sticker applied to climbing helmet" class="" data-src="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/4OxTefAzVKIeaWE4gugOE2/9ba0506655ac079f97e739d66b58116d/custom-stickers-image-1.jpg" data-srcset="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/4OxTefAzVKIeaWE4gugOE2/9ba0506655ac079f97e739d66b58116d/custom-stickers-image-1.jpg 1x, https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_720,q_auto:best,w_1320/https://images.ctfassets.net/rw1l6cgr235r/4OxTefAzVKIeaWE4gugOE2/9ba0506655ac079f97e739d66b58116d/custom-stickers-image-1.jpg 2x" src="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/4OxTefAzVKIeaWE4gugOE2/9ba0506655ac079f97e739d66b58116d/custom-stickers-image-1.jpg" srcset="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/4OxTefAzVKIeaWE4gugOE2/9ba0506655ac079f97e739d66b58116d/custom-stickers-image-1.jpg 1x, https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_720,q_auto:best,w_1320/https://images.ctfassets.net/rw1l6cgr235r/4OxTefAzVKIeaWE4gugOE2/9ba0506655ac079f97e739d66b58116d/custom-stickers-image-1.jpg 2x">
-                    <img alt="Custom sticker of grilled cheese sandwich" class="" data-src="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/45QG0ztBbW4cuiogkYsyMI/afff28a9a96822890d0e0fb2fbe6421f/custom-stickers-image-2.jpg" data-srcset="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/45QG0ztBbW4cuiogkYsyMI/afff28a9a96822890d0e0fb2fbe6421f/custom-stickers-image-2.jpg 1x, https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_720,q_auto:best,w_1320/https://images.ctfassets.net/rw1l6cgr235r/45QG0ztBbW4cuiogkYsyMI/afff28a9a96822890d0e0fb2fbe6421f/custom-stickers-image-2.jpg 2x" src="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/45QG0ztBbW4cuiogkYsyMI/afff28a9a96822890d0e0fb2fbe6421f/custom-stickers-image-2.jpg" srcset="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/45QG0ztBbW4cuiogkYsyMI/afff28a9a96822890d0e0fb2fbe6421f/custom-stickers-image-2.jpg 1x, https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_720,q_auto:best,w_1320/https://images.ctfassets.net/rw1l6cgr235r/45QG0ztBbW4cuiogkYsyMI/afff28a9a96822890d0e0fb2fbe6421f/custom-stickers-image-2.jpg 2x">
-                    <img alt="Custom stickers on Macbook laptop" class="" data-src="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/6Dbrj8kYXmgWIEUEgYKM80/08725cc0dfd073ca7094ebd746d87c7c/custom-stickers-image-3.jpg" data-srcset="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/6Dbrj8kYXmgWIEUEgYKM80/08725cc0dfd073ca7094ebd746d87c7c/custom-stickers-image-3.jpg 1x, https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_720,q_auto:best,w_1320/https://images.ctfassets.net/rw1l6cgr235r/6Dbrj8kYXmgWIEUEgYKM80/08725cc0dfd073ca7094ebd746d87c7c/custom-stickers-image-3.jpg 2x" src="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/6Dbrj8kYXmgWIEUEgYKM80/08725cc0dfd073ca7094ebd746d87c7c/custom-stickers-image-3.jpg" srcset="https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_360,q_auto:best,w_660/https://images.ctfassets.net/rw1l6cgr235r/6Dbrj8kYXmgWIEUEgYKM80/08725cc0dfd073ca7094ebd746d87c7c/custom-stickers-image-3.jpg 1x, https://res.cloudinary.com/print-bear/image/fetch/c_lfill,f_auto,fl_lossy,h_720,q_auto:best,w_1320/https://images.ctfassets.net/rw1l6cgr235r/6Dbrj8kYXmgWIEUEgYKM80/08725cc0dfd073ca7094ebd746d87c7c/custom-stickers-image-3.jpg 2x">
-              </div>
-            </div>
-          </section>
-
+        </section>
     </main>
     <footer class="Footer">
         <div class="container">
@@ -316,6 +296,10 @@
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="js/bootsnav/bootsnav.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
 

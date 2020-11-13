@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +9,368 @@
     <title>Sticker Mule | Custom stickers that kick ass</title> 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <script src="https://kit.fontawesome.com/a38c16a07e.js"></script>
+    <script type=text/javascript>
+        function Custom() 
+        {
+            var remember = document.getElementById('quantity_custom');
+            if (remember.checked)
+            {
+                var h = document.getElementById("custom");
+                var list = document.getElementById("spancustom");
+                list.remove();
+                h.insertAdjacentHTML("beforeend", "<span class='custom-quantity-wrapper' id='customspanquantity'><div aria-live='assertive' class='inputWrapper'role='alert' id='warnning'><input pattern='[0-9]*' id='valorcustom' placeholder='Quantity' type='number' class='' value='' onkeyup='custom()'></div></span>"); 
+            } 
+            else
+            {
+                var element =  document.getElementById('customspanquantity');
+                if (typeof(element) != 'undefined' && element != null)
+                {
+                    element.remove();
+                    var insert = document.getElementById("custom");
+                    insert.insertAdjacentHTML("beforeend","<span class='custom-quantity-wrapper' id='spancustom'>Custom quantity</span>");
+                }
+            }
+        }
+        function custom()
+        {
+            var num = document.getElementById('valorcustom'); 
+            if(num.value<10)
+            {
+                var element =  document.getElementById('diverrordiv');
+                if (typeof(element) != 'undefined' && element != null)
+                {
+                    element.remove();
+                }
+                var msgalertt = document.getElementById("warnning");
+                msgalertt.insertAdjacentHTML("beforeend", "<div id='diverrorless' class='tooltiperror error'><span class='arrow'></span><span class='text'>Can't be less than 10</span></div>");
+            }
+            if(num.value>10)
+            {
+                if(num.value%10==0)
+                {
+                    var element =  document.getElementById('diverrordiv');
+                    if (typeof(element) != 'undefined' && element != null)
+                    {
+                        element.remove();
+                        document.getElementById('spancustomprice').innerText="";
+                    }
+                    var element =  document.getElementById('diverrorless');
+                    if (typeof(element) != 'undefined' && element != null)
+                    {
+                        element.remove();
+                        document.getElementById('spancustomprice').innerText="";
+                    }
+                    var cantidad = document.getElementById('valorcustom').value;
+                    // spancustomprice
+                    // spancustomsavings
+                    if(cantidad!=0)
+                    {
+                        var var1 = document.getElementById('variant_79');
+                        var var2 = document.getElementById('variant_78');
+                        var var3 = document.getElementById('variant_80');
+                        var var4 = document.getElementById('variant_81');
+                        var var5 = document.getElementById('variant_77');
+                        var size1,size2;
+                        if (var1.checked)
+                        {
+                            size1=2;
+                            size2=2;
+                        }
+                        if (var2.checked)
+                        {
+                            size1=3;
+                            size2=3;
+                        }
+                        if (var3.checked)
+                        {
+                            size1=4;
+                            size2=4;
+                        }
+                        if (var4.checked)
+                        {
+                            size1=5;
+                            size2=5;
+                        }
+                        if (var5.checked)
+                        {
+                            size1 = document.getElementById('width').value;
+                            size2 = document.getElementById('height').value;
+                        }
+                        var precioxunidadW = .45+(size1*0.06); //.06
+                        var precioxunidadH = .45+(size2*0.06); //.06
+                        var precioxunidad = precioxunidadW + precioxunidadH;
+                        if(cantidad < 60)
+                        {
+                            
+                            var price=precioxunidad*cantidad;
+                            document.getElementById('spancustomprice').innerText="$"+ price.toFixed();
+                            return;
+                        }
+                        if(cantidad > 50)
+                        {
+                            if(cantidad < 100)
+                            {
+                                var descuento=0.0675;
+                                if(cantidad==60)
+                                {
+                                    var price=(precioxunidad*cantidad)-((precioxunidad*cantidad)*(descuento+0.12));
+                                    document.getElementById('spancustomprice').innerText="$"+ price.toFixed();
+                                }
+                            }
+                        }
+                    } 
+                }
+                else
+                {
+                    var element =  document.getElementById('diverrorless');
+                    if (typeof(element) != 'undefined' && element != null)
+                    {
+                        element.remove();
+                    }
+                    var msgaler = document.getElementById("warnning");
+                    msgaler.insertAdjacentHTML("beforeend", "<div id='diverrordiv' class='tooltiperror error'><span class='arrow'></span><span class='text'>Must be a multiple of 10</span></div>");
+                }
+            }
+            if(num.value==0 || num.value=="")
+            {
+                document.getElementById('spancustomprice').innerText="";
+                document.getElementById('spancustomprice').innerText="";
+            }
+        }
+        function CustomsizeWandH()
+        {
+            var remember = document.getElementById('variant_77');
+            if (remember.checked)
+            {
+                var element =  document.getElementById('variant_77_L');
+                element.insertAdjacentHTML("afterend", "<span id='custom_dimensions_field' class='custom_dimensions'>&nbsp;<span class='inputWrapper' id='customwidth'><input id='width' name='width' placeholder='Width' size='4' step='0.01' type='number' onkeyup='CheckcustomW()'></span><span> × </span><span class='inputWrapper' id='customheight'><input id='height' name='height' placeholder='Height' size='4' step='0.01' type='number' onkeyup='CheckcustomH()'></span></span>"); 
+                var elemento = document.getElementById("variant-quantities");
+                elemento.className += " disabled";
+                var price = document.getElementById('price_10000_id').innerText;
+                //price = price.replace('$', '');
+                //alert(price);
+            } 
+            else
+            {
+                var element =  document.getElementById('custom_dimensions_field');
+                if (typeof(element) != 'undefined' && element != null)
+                {
+                    element.remove();
+                }
+                var var1 = document.getElementById('variant_79');
+                var var2 = document.getElementById('variant_78');
+                var var3 = document.getElementById('variant_80');
+                var var4 = document.getElementById('variant_81');
+                var var5 = document.getElementById('variant_77');
+                if(var1.checked)
+                {
+                    var precioxunidad = 1.1400000000000001;
+                    var price=precioxunidad*50;
+                    document.getElementById('price_50_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*100)/100*70;
+                    document.getElementById('price_100_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*200)/100*60;
+                    document.getElementById('price_200_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*300)/100*65;
+                    document.getElementById('price_300_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*500)/100*50;
+                    document.getElementById('price_500_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*1000)/100*45;
+                    document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*2000)/100*40;
+                    document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*3000)/100*38;
+                    document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*5000)/100*32;
+                    document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*10000)/100*30;
+                    document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
+                }
+                if(var2.checked)
+                {
+                    var precioxunidad = 1.26;
+                    var price=precioxunidad*50;
+                    document.getElementById('price_50_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*100)/100*70;
+                    document.getElementById('price_100_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*200)/100*60;
+                    document.getElementById('price_200_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*300)/100*65;
+                    document.getElementById('price_300_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*500)/100*50;
+                    document.getElementById('price_500_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*1000)/100*45;
+                    document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*2000)/100*40;
+                    document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*3000)/100*38;
+                    document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*5000)/100*32;
+                    document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*10000)/100*30;
+                    document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
+                }
+                if(var3.checked)
+                {
+                    var precioxunidad = 1.38;
+                    var price=precioxunidad*50;
+                    document.getElementById('price_50_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*100)/100*70;
+                    document.getElementById('price_100_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*200)/100*60;
+                    document.getElementById('price_200_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*300)/100*65;
+                    document.getElementById('price_300_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*500)/100*50;
+                    document.getElementById('price_500_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*1000)/100*45;
+                    document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*2000)/100*40;
+                    document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*3000)/100*38;
+                    document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*5000)/100*32;
+                    document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*10000)/100*30;
+                    document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
+                }
+                if(var4.checked)
+                {
+                    var precioxunidad = 1.5;
+                    var price=precioxunidad*50;
+                    document.getElementById('price_50_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*100)/100*70;
+                    document.getElementById('price_100_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*200)/100*60;
+                    document.getElementById('price_200_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*300)/100*65;
+                    document.getElementById('price_300_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*500)/100*50;
+                    document.getElementById('price_500_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*1000)/100*45;
+                    document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*2000)/100*40;
+                    document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*3000)/100*38;
+                    document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*5000)/100*32;
+                    document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*10000)/100*30;
+                    document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
+                }
+            }
+        }
+        function CheckcustomW()
+        {
+            var num = document.getElementById('width');
+            var num2 = document.getElementById('height');
+            if(num.value>36)
+            {
+                var msgalertt = document.getElementById("customwidth");
+                msgalertt.insertAdjacentHTML("afterbegin", "<div class='tooltiperror' id='tooltiperrorW'><span class='arrow'></span><span class='text'>Max size is 36 inches</span></div>");
+            }
+            else
+            {
+                var element =  document.getElementById('tooltiperrorW');
+                if (typeof(element) != 'undefined' && element != null)
+                {
+                    element.remove();
+                }
+                if(num.value!=0 && num2.value!=0)
+                {
+                    var elemento = document.getElementById("variant-quantities");
+                    elemento.className = " options radio";
+                    var precioxunidadW = .45+(num.value*0.06); //.06
+                    var precioxunidadH = .45+(num2.value*0.06); //.06
+                    var precioxunidad = precioxunidadW + precioxunidadH;
+                    var price=precioxunidad*50;
+                    
+                    document.getElementById('price_50_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*100)/100*70;
+                    document.getElementById('price_100_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*200)/100*60;
+                    document.getElementById('price_200_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*300)/100*65;
+                    document.getElementById('price_300_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*500)/100*50;
+                    document.getElementById('price_500_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*1000)/100*45;
+                    document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*2000)/100*40;
+                    document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*3000)/100*38;
+                    document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*5000)/100*32;
+                    document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
+                    var price=(precioxunidad*10000)/100*30;
+                    document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
+                }
+                else
+                {
+                    var elemento = document.getElementById("variant-quantities");
+                    elemento.className += " disabled";
+                }
+
+            }
+        }
+        function CheckcustomH()
+        {
+            var num = document.getElementById('height');
+            var num2 = document.getElementById('width');
+            if(num.value>24)
+            {
+                var msgalertt = document.getElementById("customheight");
+                msgalertt.insertAdjacentHTML("afterbegin", "<div class='tooltiperror' id='tooltiperrorH'><span class='arrow'></span><span class='text'>Max size is 24 inches</span></div>");
+            }
+            else
+            {
+                var element =  document.getElementById('tooltiperrorH');
+                if (typeof(element) != 'undefined' && element != null)
+                {
+                    element.remove();
+                }
+                if(num.value!=0 && num2.value!=0)
+                {
+                    var elemento = document.getElementById("variant-quantities");
+                    elemento.className = " options radio";
+                    pricescustomWandH1(num2.value,num.value);
+                }
+                else
+                {
+                    var elemento = document.getElementById("variant-quantities");
+                    elemento.className += " disabled";
+                }
+            }
+            function pricescustomWandH1(widthC,heightC)
+            {
+                var precioxunidadW = .45+(widthC*0.06); //.06
+                var precioxunidadH = .45+(heightC*0.06); //.06
+                var precioxunidad = precioxunidadW + precioxunidadH;
+                var price=precioxunidad*50;
+                
+                document.getElementById('price_50_id').innerText="$"+ price.toFixed();
+                var price=(precioxunidad*100)/100*70;
+                document.getElementById('price_100_id').innerText="$"+ price.toFixed();
+                var price=(precioxunidad*200)/100*60;
+                document.getElementById('price_200_id').innerText="$"+ price.toFixed();
+                var price=(precioxunidad*300)/100*65;
+                document.getElementById('price_300_id').innerText="$"+ price.toFixed();
+                var price=(precioxunidad*500)/100*50;
+                document.getElementById('price_500_id').innerText="$"+ price.toFixed();
+                var price=(precioxunidad*1000)/100*45;
+                document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
+                var price=(precioxunidad*2000)/100*40;
+                document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
+                var price=(precioxunidad*3000)/100*38;
+                document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
+                var price=(precioxunidad*5000)/100*32;
+                document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
+                var price=(precioxunidad*10000)/100*30;
+                document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
+                return;
+            }
+        }
+    </script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
@@ -16,20 +381,56 @@
                 </button>
             </div>
             <a href="index.php" class="navbar-brand d-flex" style="padding-top: 5px;">
-                <img src="/assets/silueta1.png" width="30" height="25">
+                <img src="/assets/Logo_2.png" width="30" height="25">
                 <h4 style="color: #582707;" class="dt">Acme</h4>
                 <h4 style="color: #f26922;" class="dt">Stickers</h4>
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link"style="color: #582707;" href="#">Stickers</a></li> 
+                    <li><a class="nav-link"style="color: #582707;" href="custom-stickers.php">Stickers</a></li> 
                 </ul>
             </div>
             <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex:0.5;">
                 <ul class="navbar-nav mr-auto">
                     <li><a href="/cart.php"><i  class="nav-link fas fa-shopping-cart" style="color: #582707;"></i></a></li>
+                    <!--<li class="nav-item dropdown">
+                        <div class="AccountLinks">
+                            <div class="wrapper">
+                            <a class="nav-link dropdown-toggle toggle HeaderNavItem" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
+                                <img alt="" data-testid="AccountMenuAvatar" src="" srcset="" class="avatar small">
+                            </a>
+                            <div class="dropdown-menu flyout" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item userItem account" href="#">
+                                        <span class="userAvatar">
+                                            <img alt="" data-testid="MenuAvatar" src="" srcset="" class="avatarB medium">
+                                        </span>
+                                        <span class="userDetails">
+                                            <p class="itemText">
+                                                <strong id="username"></strong>
+                                            </p>
+                                            <p class="itemText userEmail" id=useremail></p>
+                                            <p class="itemText highlight">Account</p>
+                                        </span>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                        <a href="/account/orders" class="dropdown-item">
+                                            <span class="">Orders</span>
+                                        </a>
+                                        <a href="/account/reorder" class="dropdown-item">
+                                            <span class="">Reorder</span>
+                                        </a>
+                                        <a href="/account/invite" class="dropdown-item">
+                                            <span class="">Get $10 credit</span>
+                                        </a>
+                                        <a href="/logout" class="dropdown-item">
+                                            <span class="">Log out</span>
+                                        </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>-->
                     <?php
-                        if(!isset($_SESSION['Fullname']))
+                        if(!isset($_SESSION['id']))
                         {
                         ?>
                             <li><a class="nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/login.php">Log in</a></li>
@@ -37,8 +438,46 @@
                         <?php
                         }else
                         {
-                                echo "<li> <a class='nav-link text-muted pl-4' style='padding-right: 1.0rem;'>" . $_SESSION['Fullname'] . "</a> </li>
-                                      <li> <a class='nav-link pl-4' style='padding-right: 1.0rem;' href='logout.php'>Log out</a></li>";                        
+                            /*
+                            <li> <a class='nav-link text-muted pl-4' style='padding-right: 1.0rem;'>" . $_SESSION['Fullname'] . "</a> </li>
+                                      <li> <a class='nav-link pl-4' style='padding-right: 1.0rem;' href='logout.php'>Log out</a></li>" 
+                            */ 
+                                echo "<li class='nav-item dropdown'>
+                                        <div class='AccountLinks'>
+                                            <div class='wrapper' style='padding:0px;' >
+                                            <a class='nav-link dropdown-toggle toggle HeaderNavItem' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> 
+                                                <img alt='' data-testid='AccountMenuAvatar' src='". $_SESSION['image'] ."' srcset='' class='avatar small'>
+                                            </a>
+                                            <div class='dropdown-menu flyout' aria-labelledby='navbarDropdown'>
+                                                <a class='dropdown-item userItem account' href='#'>
+                                                    <span class='userAvatar'>
+                                                        <img alt='' data-testid='MenuAvatar' src='". $_SESSION['image'] ."' srcset='' class='avatarB medium'>
+                                                    </span>
+                                                    <span class='userDetails'>
+                                                        <p class='itemText'>
+                                                            <strong id='username'>". $_SESSION['name'] ."</strong>
+                                                        </p>
+                                                        <p class='itemText userEmail' id=useremail>". $_SESSION['email'] ."</p>
+                                                        <p class='itemText highlight'>Account</p>
+                                                    </span>
+                                                </a>
+                                                <div class='dropdown-divider'></div>
+                                                    <a href='/account/orders' class='dropdown-item'>
+                                                        <span class=''>Orders</span>
+                                                    </a>
+                                                    <a href='/account/reorder' class='dropdown-item'>
+                                                        <span class=''>Reorder</span>
+                                                    </a>
+                                                    <a href='/account/invite' class='dropdown-item'>
+                                                        <span class=''>Get $10 credit</span>
+                                                    </a>
+                                                    <a href='/logout' class='dropdown-item'>
+                                                        <span class=''>Log out</span>
+                                                    </a>;
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>     ";              
                         }
                     ?>
                 </ul>
@@ -93,24 +532,24 @@
                                 </legend>
                                 <ul class="options" id="variant-options">
                                     <li>
-                                        <input id="variant_79" name="variant_id" readonly="" type="radio" value="79" checked="">
+                                        <input id="variant_79" name="variant_id" readonly="" type="radio" value="79" checked="" onclick="CustomsizeWandH()">
                                         <label for="variant_79"> 2" x 2"</label>
                                     </li>
                                     <li>
-                                        <input id="variant_78" name="variant_id" readonly="" type="radio" value="78">
+                                        <input id="variant_78" name="variant_id" readonly="" type="radio" value="78" onclick="CustomsizeWandH()">
                                         <label for="variant_78"> 3" x 3"</label>
                                     </li>
                                     <li>
-                                        <input id="variant_80" name="variant_id" readonly="" type="radio" value="80">
+                                        <input id="variant_80" name="variant_id" readonly="" type="radio" value="80" onclick="CustomsizeWandH()">
                                         <label for="variant_80"> 4" x 4"</label>
                                     </li>
                                     <li>
-                                        <input id="variant_81" name="variant_id" readonly="" type="radio" value="81">
+                                        <input id="variant_81" name="variant_id" readonly="" type="radio" value="81" onclick="CustomsizeWandH()">
                                         <label for="variant_81"> 5" x 5"</label>
                                     </li>
                                     <li>
-                                        <input id="variant_77" name="variant_id" readonly="" type="radio" value="77">
-                                        <label for="variant_77"> Custom size</label>
+                                        <input id="variant_77" name="variant_id" readonly="" type="radio" value="77" onclick="CustomsizeWandH()"> 
+                                        <label id="variant_77_L"> Custom size</label>
                                     </li>
                                 </ul>
                             </div>
@@ -119,7 +558,7 @@
                                 <ul class=" options radio" id="variant-quantities">
                                     <li class="checked quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_50" name="quantity" readonly="" type="radio" value="50" checked="">
+                                            <input id="quantity_50" name="quantity" readonly="" type="radio" value="50" checked="" onclick="Custom()">
                                             <label class="checked quantity" for="quantity_50"> 50</label>
                                         </span>
                                         <span class="table-cell price" id="price_50_id">$57</span>
@@ -127,84 +566,84 @@
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_100" name="quantity" readonly="" type="radio" value="100">
+                                            <input id="quantity_100" name="quantity" readonly="" type="radio" value="100" onclick="Custom()">
                                             <label class=" quantity" for="quantity_100"> 100</label>
                                         </span>
-                                        <span class="table-cell price" id="price_100_id">$70</span>
-                                        <span class="table-cell savings">Save 39%</span>
+                                        <span class="table-cell price" id="price_100_id">$80</span>
+                                        <span class="table-cell savings">Save 30%</span>
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_200" name="quantity" readonly="" type="radio" value="200">
+                                            <input id="quantity_200" name="quantity" readonly="" type="radio" value="200" onclick="Custom()">
                                             <label class=" quantity" for="quantity_200"> 200</label>
-                                        </span><span class="table-cell price" id="price_200_id">$92</span>
+                                        </span><span class="table-cell price" id="price_200_id">$137</span>
+                                        <span class="table-cell savings">Save 40%</span>
+                                    </li>
+                                    <li class=" quantity-item">
+                                        <span class="table-cell">
+                                            <input id="quantity_300" name="quantity" readonly="" type="radio" value="300" onclick="Custom()">
+                                            <label class=" quantity" for="quantity_300"> 300</label>
+                                        </span>
+                                        <span class="table-cell price" id="price_300_id">$222</span>
+                                        <span class="table-cell savings">Save 45%</span>
+                                    </li>
+                                    <li class=" quantity-item">
+                                        <span class="table-cell">
+                                            <input id="quantity_500" name="quantity" readonly="" type="radio" value="500" onclick="Custom()">
+                                            <label class=" quantity" for="quantity_500"> 500</label>
+                                        </span>
+                                        <span class="table-cell price" id="price_500_id">$285</span>
+                                        <span class="table-cell savings">Save 50%</span>
+                                    </li>
+                                    <li class=" quantity-item">
+                                        <span class="table-cell">
+                                            <input id="quantity_1000" name="quantity" readonly="" type="radio" value="1000" onclick="Custom()">
+                                            <label class=" quantity" for="quantity_1000"> 1,000</label>
+                                        </span>
+                                        <span class="table-cell price" id="price_1000_id">$513</span>
+                                        <span class="table-cell savings">Save 55%</span>
+                                    </li>
+                                    <li class=" quantity-item">
+                                        <span class="table-cell">
+                                            <input id="quantity_2000" name="quantity" readonly="" type="radio" value="2000" onclick="Custom()">
+                                            <label class=" quantity" for="quantity_2000"> 2,000</label>
+                                        </span>
+                                        <span class="table-cell price" id="price_2000_id">$912</span>
                                         <span class="table-cell savings">Save 60%</span>
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_300" name="quantity" readonly="" type="radio" value="300">
-                                            <label class=" quantity" for="quantity_300"> 300</label>
+                                            <input id="quantity_3000" name="quantity" readonly="" type="radio" value="3000" onclick="Custom()">
+                                            <label class=" quantity" for="quantity_3000"> 3,000</label>
                                         </span>
-                                        <span class="table-cell price" id="price_300_id">$111</span>
+                                        <span class="table-cell price" id="price_3000_id">$1300</span>
+                                        <span class="table-cell savings">Save 62%</span>
+                                    </li>
+                                    <li class=" quantity-item">
+                                        <span class="table-cell">
+                                            <input id="quantity_5000" name="quantity" readonly="" type="radio" value="5000" onclick="Custom()">
+                                            <label class=" quantity" for="quantity_5000"> 5,000</label>
+                                        </span>
+                                        <span class="table-cell price" id="price_5000_id">$1824</span>
                                         <span class="table-cell savings">Save 68%</span>
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_500" name="quantity" readonly="" type="radio" value="500">
-                                            <label class=" quantity" for="quantity_500"> 500</label>
-                                        </span>
-                                        <span class="table-cell price" id="price_500_id">$147</span>
-                                        <span class="table-cell savings">Save 74%</span>
-                                    </li>
-                                    <li class=" quantity-item">
-                                        <span class="table-cell">
-                                            <input id="quantity_1000" name="quantity" readonly="" type="radio" value="1000">
-                                            <label class=" quantity" for="quantity_1000"> 1,000</label>
-                                        </span>
-                                        <span class="table-cell price" id="price_1000_id">$225</span>
-                                        <span class="table-cell savings">Save 80%</span>
-                                    </li>
-                                    <li class=" quantity-item">
-                                        <span class="table-cell">
-                                            <input id="quantity_2000" name="quantity" readonly="" type="radio" value="2000">
-                                            <label class=" quantity" for="quantity_2000"> 2,000</label>
-                                        </span>
-                                        <span class="table-cell price" id="price_2000_id">$360</span>
-                                        <span class="table-cell savings">Save 84%</span>
-                                    </li>
-                                    <li class=" quantity-item">
-                                        <span class="table-cell">
-                                            <input id="quantity_3000" name="quantity" readonly="" type="radio" value="3000">
-                                            <label class=" quantity" for="quantity_3000"> 3,000</label>
-                                        </span>
-                                        <span class="table-cell price" id="price_3000_id">$481</span>
-                                        <span class="table-cell savings">Save 86%</span>
-                                    </li>
-                                    <li class=" quantity-item">
-                                        <span class="table-cell">
-                                            <input id="quantity_5000" name="quantity" readonly="" type="radio" value="5000">
-                                            <label class=" quantity" for="quantity_5000"> 5,000</label>
-                                        </span>
-                                        <span class="table-cell price" id="price_5000_id">$703</span>
-                                        <span class="table-cell savings">Save 88%</span>
-                                    </li>
-                                    <li class=" quantity-item">
-                                        <span class="table-cell">
-                                            <input id="quantity_10000" name="quantity" readonly="" type="radio" value="10000">
+                                            <input id="quantity_10000" name="quantity" readonly="" type="radio" value="10000" onclick="Custom()">
                                             <label class=" quantity" for="quantity_10000"> 10,000</label>
                                         </span>
-                                        <span class="table-cell price" id="price_10000_id">$1,191</span>
-                                        <span class="table-cell savings">Save 90%</span>
+                                        <span class="table-cell price" id="price_10000_id">$3420</span>
+                                        <span class="table-cell savings">Save 70%</span>
                                     </li>
-                                    <li class=" quantity-item">
+                                    <li class="quantity-item" >
                                         <span class="table-cell">
-                                            <input id="quantity_custom" name="quantity" readonly="" type="radio" value="0">
-                                            <label class=" quantity" for="quantity_custom">
-                                                <span class="custom-quantity-wrapper">Custom quantity</span>
+                                            <input id="quantity_custom" name="quantity" readonly="" type="radio" value="" onclick="Custom()">
+                                            <label class=" quantity" id="custom">
+                                                <span class="custom-quantity-wrapper" id="spancustom">Custom quantity</span>
                                             </label>
                                         </span>
-                                        <span class="table-cell"></span>
-                                        <span class="table-cell"></span>
+                                        <span class="table-cell" id="spancustomprice"></span>
+                                        <span class="table-cell" id="spancustomsavings"></span>
                                     </li>
                                 </ul>
                             </div>
@@ -250,49 +689,20 @@
                 </div>
             </div>
         </section>
-        <section class="video_cut">
-            <div class="vid">
+        <section class="container_video">
             <div class="container">
-                <div class="video">
-                    <div class="jsx-1954592401 ">
-                        <div class="jsx-1954592401 wistia_responsive_padding">
-                            <div class="jsx-1954592401 wistia_responsive_wrapper">
-                                <div id="wistia_chrome_24" class="w-chrome" style="display: inline-block; height: 270px; line-height: normal; margin: 0px; padding: 0px; position: relative; vertical-align: top; width: 480px; outline: currentcolor none medium; overflow: hidden; box-sizing: content-box;" tabindex="-1">
-                                    <div id="wistia_grid_30_wrapper" style="display: block; width: 480px; height: 270px;">
-                                        <div id="wistia_grid_30_main" style="width: 480px; left: 0px; height: 270px; margin-top: 0px;">
-                                            <div id="wistia_grid_30_center" style="width: 100%; height: 100%;">
-                                                <div class="w-ui-container" style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; opacity: 1;">
-                                                    <div class="w-vulcan-v2 w-css-reset" id="w-vulcan-v2-29" style="box-sizing: border-box; cursor: default; height: 100%; left: 0px; position: absolute; visibility: visible; top: 0px; width: 100%;">
-                                                        <div class="w-vulcan--background w-css-reset" style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
-                                                            <div class="w-css-reset" data-handle="thumbnail">
-                                                                <div>
-                                                                    <div style="height: 100%; left: 0px; opacity: 1; position: absolute; top: 0px; width: 100%; display: block;" class="w-css-reset">
-                                                                        <img class="w-css-reset" srcset="https://embed-fastly.wistia.com/deliveries/af50cd8a07c816570cde6718f114f3f0.webp?image_crop_resized=640x360 320w" 
-                                                                        src="https://embed-fastly.wistia.com/deliveries/af50cd8a07c816570cde6718f114f3f0.webp?image_crop_resized=640x360" 
-                                                                        style="height: 270px; left: 0px; position: absolute; top: 0px; width: 480px; clip: auto; display: block; border-color: rgb(0, 0, 0); border-style: solid; border-width: 0px; box-sizing: content-box;"
-                                                                         alt="Video Thumbnail">
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="videosize">
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <img class="embed-responsive-item" src="/assets/poster.jpg" alt="">
+                        <iframe class="embed-responsive-item" poster="/assets/poster.jpg" src="" allowfullscreen></iframe>
+                      </div>
                 </div>
            <div class="contentVideo">
-               <h2 class="videoTitle ">Free shipping, free online proofs, fast turnaround.</h2>
+               <h2 class="videoTitle">Free shipping, free online proofs, fast turnaround.</h2>
                <p class="VideoText">Sticker Mule is the fastest and easiest way to buy custom 
                     printed products. Order in 60 seconds and we'll turn your designs and illustrations into custom stickers, 
                     magnets, buttons, labels and packaging in days. We offer free online proofs, free worldwide shipping and super fast turnaround.
                 </p>
-            </div>
             </div>
             </div>
         </section>
