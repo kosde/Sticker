@@ -6,37 +6,407 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticker Mule | Custom stickers that kick ass</title> 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <?php
+     include "css.php";
+    ?>
     <script src="https://kit.fontawesome.com/a38c16a07e.js"></script>
     <script type=text/javascript>
-        function Custom() 
+        var cant60=.12,
+            cant100=.39, 
+            cant200=.60, 
+            cant300=.68, 
+            cant500=.78, 
+            cant1000=.85, 
+            cant2000=.87, 
+            cant3000=.88, 
+            cant5000=.89, 
+            cant10000=.92;
+        var scant100=cant100*100,
+            scant200=cant200*100,
+            scant300=cant300*100,
+            scant500=cant500*100,
+            scant1000=cant1000*100, 
+            scant2000=cant2000*100,
+            scant3000=cant3000*100,
+            scant5000=cant5000*100,
+            scant10000=cant10000*100;
+        var descB=43;
+        function Custom(price) 
         {
             var remember = document.getElementById('quantity_custom');
+            document.getElementById('spancustomprice').innerText="";
+            document.getElementById('spancustomsavings').innerText="";
             if (remember.checked)
             {
+                document.getElementById("price_custom").checked = 1;
                 var h = document.getElementById("custom");
                 var list = document.getElementById("spancustom");
                 list.remove();
-                h.insertAdjacentHTML("beforeend", "<span class='custom-quantity-wrapper' id='customspanquantity'><div aria-live='assertive' class='inputWrapper'role='alert' id='warnning'><input pattern='[0-9]*' id='valorcustom' placeholder='Quantity' type='number' class='' value='' onkeyup='custom()'></div></span>"); 
+                h.insertAdjacentHTML("beforeend", "<span class='custom-quantity-wrapper' id='customspanquantity'><div aria-live='assertive' class='inputWrapper'role='alert' id='warnning'><input pattern='[0-9]*' id='valorcustom' style='width: 100px;' placeholder='Quantity' type='number' class='' value='' onkeyup='custom()'></div></span>"); 
             } 
             else
             {
                 var element =  document.getElementById('customspanquantity');
+                document.getElementById("price_custom").checked = 0;
                 if (typeof(element) != 'undefined' && element != null)
                 {
                     element.remove();
                     var insert = document.getElementById("custom");
                     insert.insertAdjacentHTML("beforeend","<span class='custom-quantity-wrapper' id='spancustom'>Custom quantity</span>");
                 }
+                var valorspan = document.getElementById("price_50_id").innerText;
+                if(price==valorspan.replace('$',''))
+                {
+                    document.getElementById("price_50").checked = 1;
+                    document.getElementById("price_100").checked = 0;
+                    document.getElementById("price_200").checked = 0;
+                    document.getElementById("price_300").checked = 0;
+                    document.getElementById("price_500").checked = 0;
+                    document.getElementById("price_1000").checked = 0;
+                    document.getElementById("price_2000").checked = 0;
+                    document.getElementById("price_3000").checked = 0;
+                    document.getElementById("price_5000").checked = 0;
+                    document.getElementById("price_10000").checked = 0;
+                    document.getElementById("price_50").style = "";
+                    document.getElementById("price_100").style = "display:none;";
+                    document.getElementById("price_200").style = "display:none;";
+                    document.getElementById("price_300").style = "display:none;";
+                    document.getElementById("price_500").style = "display:none;";
+                    document.getElementById("price_1000").style = "display:none;";
+                    document.getElementById("price_2000").style = "display:none;";
+                    document.getElementById("price_3000").style = "display:none;";
+                    document.getElementById("price_5000").style = "display:none;";
+                    document.getElementById("price_10000").style = "display:none;";
+                    document.getElementById("price_50").type = "hidden";
+                    document.getElementById("price_100").type = "radio";
+                    document.getElementById("price_200").type = "radio";
+                    document.getElementById("price_300").type = "radio";
+                    document.getElementById("price_500").type = "radio";
+                    document.getElementById("price_1000").type = "radio";
+                    document.getElementById("price_2000").type = "radio";
+                    document.getElementById("price_3000").type = "radio";
+                    document.getElementById("price_5000").type = "radio";
+                    document.getElementById("price_10000").type = "radio";
+                }
+                var valorspan = document.getElementById("price_100_id").innerText;
+                if(price== valorspan.replace('$',''))
+                {
+                    document.getElementById("price_50").checked = 0;
+                    document.getElementById("price_100").checked = 1;
+                    document.getElementById("price_200").checked = 0;
+                    document.getElementById("price_300").checked = 0;
+                    document.getElementById("price_500").checked = 0;
+                    document.getElementById("price_1000").checked = 0;
+                    document.getElementById("price_2000").checked = 0;
+                    document.getElementById("price_3000").checked = 0;
+                    document.getElementById("price_5000").checked = 0;
+                    document.getElementById("price_10000").checked = 0;
+                    document.getElementById("price_50").style = "display:none;";
+                    document.getElementById("price_100").style = "";
+                    document.getElementById("price_200").style = "display:none;";
+                    document.getElementById("price_300").style = "display:none;";
+                    document.getElementById("price_500").style = "display:none;";
+                    document.getElementById("price_1000").style = "display:none;";
+                    document.getElementById("price_2000").style = "display:none;";
+                    document.getElementById("price_3000").style = "display:none;";
+                    document.getElementById("price_5000").style = "display:none;";
+                    document.getElementById("price_10000").style = "display:none;";
+                    document.getElementById("price_50").type = "radio";
+                    document.getElementById("price_100").type = "hidden";
+                    document.getElementById("price_200").type = "radio";
+                    document.getElementById("price_300").type = "radio";
+                    document.getElementById("price_500").type = "radio";
+                    document.getElementById("price_1000").type = "radio";
+                    document.getElementById("price_2000").type = "radio";
+                    document.getElementById("price_3000").type = "radio";
+                    document.getElementById("price_5000").type = "radio";
+                    document.getElementById("price_10000").type = "radio";
+                }
+                var valorspan = document.getElementById("price_200_id").innerText;
+                if(price == valorspan.replace('$',''))
+                {
+                    document.getElementById("price_50").checked = 0;
+                    document.getElementById("price_100").checked = 0;
+                    document.getElementById("price_200").checked = 1;
+                    document.getElementById("price_300").checked = 0;
+                    document.getElementById("price_500").checked = 0;
+                    document.getElementById("price_1000").checked = 0;
+                    document.getElementById("price_2000").checked = 0;
+                    document.getElementById("price_3000").checked = 0;
+                    document.getElementById("price_5000").checked = 0;
+                    document.getElementById("price_10000").checked = 0;
+                    document.getElementById("price_50").style = "display:none;";
+                    document.getElementById("price_100").style = "display:none;";
+                    document.getElementById("price_200").style = "";
+                    document.getElementById("price_300").style = "display:none;";
+                    document.getElementById("price_500").style = "display:none;";
+                    document.getElementById("price_1000").style = "display:none;";
+                    document.getElementById("price_2000").style = "display:none;";
+                    document.getElementById("price_3000").style = "display:none;";
+                    document.getElementById("price_5000").style = "display:none;";
+                    document.getElementById("price_10000").style = "display:none;";
+                    document.getElementById("price_50").type = "radio";
+                    document.getElementById("price_100").type = "radio";
+                    document.getElementById("price_200").type = "hidden";
+                    document.getElementById("price_300").type = "radio";
+                    document.getElementById("price_500").type = "radio";
+                    document.getElementById("price_1000").type = "radio";
+                    document.getElementById("price_2000").type = "radio";
+                    document.getElementById("price_3000").type = "radio";
+                    document.getElementById("price_5000").type = "radio";
+                    document.getElementById("price_10000").type = "radio";
+                }
+                var valorspan = document.getElementById("price_300_id").innerText;
+                if(price== valorspan.replace('$',''))
+                {
+                    document.getElementById("price_50").checked = 0;
+                    document.getElementById("price_100").checked = 0;
+                    document.getElementById("price_200").checked = 0;
+                    document.getElementById("price_300").checked = 1;
+                    document.getElementById("price_500").checked = 0;
+                    document.getElementById("price_1000").checked = 0;
+                    document.getElementById("price_2000").checked = 0;
+                    document.getElementById("price_3000").checked = 0;
+                    document.getElementById("price_5000").checked = 0;
+                    document.getElementById("price_10000").checked = 0;
+                    document.getElementById("price_50").style = "display:none;";
+                    document.getElementById("price_100").style = "display:none;";
+                    document.getElementById("price_200").style = "display:none;";
+                    document.getElementById("price_300").style = "";
+                    document.getElementById("price_500").style = "display:none;";
+                    document.getElementById("price_1000").style = "display:none;";
+                    document.getElementById("price_2000").style = "display:none;";
+                    document.getElementById("price_3000").style = "display:none;";
+                    document.getElementById("price_5000").style = "display:none;";
+                    document.getElementById("price_10000").style = "display:none;";
+                    document.getElementById("price_50").type = "radio";
+                    document.getElementById("price_100").type = "radio";
+                    document.getElementById("price_200").type = "radio";
+                    document.getElementById("price_300").type = "hidden";
+                    document.getElementById("price_500").type = "radio";
+                    document.getElementById("price_1000").type = "radio";
+                    document.getElementById("price_2000").type = "radio";
+                    document.getElementById("price_3000").type = "radio";
+                    document.getElementById("price_5000").type = "radio";
+                    document.getElementById("price_10000").type = "radio";
+                }
+                var valorspan = document.getElementById("price_500_id").innerText;
+                if(price== valorspan.replace('$',''))
+                {
+                    document.getElementById("price_50").checked = 0;
+                    document.getElementById("price_100").checked = 0;
+                    document.getElementById("price_200").checked = 0;
+                    document.getElementById("price_300").checked = 0;
+                    document.getElementById("price_500").checked = 1;
+                    document.getElementById("price_1000").checked = 0;
+                    document.getElementById("price_2000").checked = 0;
+                    document.getElementById("price_3000").checked = 0;
+                    document.getElementById("price_5000").checked = 0;
+                    document.getElementById("price_10000").checked = 0;
+                    document.getElementById("price_50").style = "display:none;";
+                    document.getElementById("price_100").style = "display:none;";
+                    document.getElementById("price_200").style = "display:none;";
+                    document.getElementById("price_300").style = "display:none;";
+                    document.getElementById("price_500").style = "";
+                    document.getElementById("price_1000").style = "display:none;";
+                    document.getElementById("price_2000").style = "display:none;";
+                    document.getElementById("price_3000").style = "display:none;";
+                    document.getElementById("price_5000").style = "display:none;";
+                    document.getElementById("price_10000").style = "display:none;";
+                    document.getElementById("price_50").type = "radio";
+                    document.getElementById("price_100").type = "radio";
+                    document.getElementById("price_200").type = "radio";
+                    document.getElementById("price_300").type = "radio";
+                    document.getElementById("price_500").type = "hidden";
+                    document.getElementById("price_1000").type = "radio";
+                    document.getElementById("price_2000").type = "radio";
+                    document.getElementById("price_3000").type = "radio";
+                    document.getElementById("price_5000").type = "radio";
+                    document.getElementById("price_10000").type = "radio";
+                }
+                var valorspan = document.getElementById("price_1000_id").innerText;
+                if(price== valorspan.replace('$',''))
+                {
+                    document.getElementById("price_50").checked = 0;
+                    document.getElementById("price_100").checked = 0;
+                    document.getElementById("price_200").checked = 0;
+                    document.getElementById("price_300").checked = 0;
+                    document.getElementById("price_500").checked = 0;
+                    document.getElementById("price_1000").checked = 1;
+                    document.getElementById("price_2000").checked = 0;
+                    document.getElementById("price_3000").checked = 0;
+                    document.getElementById("price_5000").checked = 0;
+                    document.getElementById("price_10000").checked = 0;
+                    document.getElementById("price_50").style = "display:none;";
+                    document.getElementById("price_100").style = "display:none;";
+                    document.getElementById("price_200").style = "display:none;";
+                    document.getElementById("price_300").style = "display:none;";
+                    document.getElementById("price_500").style = "display:none;";
+                    document.getElementById("price_1000").style = "";
+                    document.getElementById("price_2000").style = "display:none;";
+                    document.getElementById("price_3000").style = "display:none;";
+                    document.getElementById("price_5000").style = "display:none;";
+                    document.getElementById("price_10000").style = "display:none;";
+                    document.getElementById("price_50").type = "radio";
+                    document.getElementById("price_100").type = "radio";
+                    document.getElementById("price_200").type = "radio";
+                    document.getElementById("price_300").type = "radio";
+                    document.getElementById("price_500").type = "radio";
+                    document.getElementById("price_1000").type = "hidden";
+                    document.getElementById("price_2000").type = "radio";
+                    document.getElementById("price_3000").type = "radio";
+                    document.getElementById("price_5000").type = "radio";
+                    document.getElementById("price_10000").type = "radio";
+                }
+                var valorspan = document.getElementById("price_2000_id").innerText;
+                if(price== valorspan.replace('$',''))
+                {
+                    document.getElementById("price_50").checked = 0;
+                    document.getElementById("price_100").checked = 0;
+                    document.getElementById("price_200").checked = 0;
+                    document.getElementById("price_300").checked = 0;
+                    document.getElementById("price_500").checked = 0;
+                    document.getElementById("price_1000").checked = 0;
+                    document.getElementById("price_2000").checked = 1;
+                    document.getElementById("price_3000").checked = 0;
+                    document.getElementById("price_5000").checked = 0;
+                    document.getElementById("price_10000").checked = 0;
+                    document.getElementById("price_50").style = "display:none;";
+                    document.getElementById("price_100").style = "display:none;";
+                    document.getElementById("price_200").style = "display:none;";
+                    document.getElementById("price_300").style = "display:none;";
+                    document.getElementById("price_500").style = "display:none;";
+                    document.getElementById("price_1000").style = "display:none;";
+                    document.getElementById("price_2000").style = "";
+                    document.getElementById("price_3000").style = "display:none;";
+                    document.getElementById("price_5000").style = "display:none;";
+                    document.getElementById("price_10000").style = "display:none;";
+                    document.getElementById("price_50").type = "radio";
+                    document.getElementById("price_100").type = "radio";
+                    document.getElementById("price_200").type = "radio";
+                    document.getElementById("price_300").type = "radio";
+                    document.getElementById("price_500").type = "radio";
+                    document.getElementById("price_1000").type = "radio";
+                    document.getElementById("price_2000").type = "hidden";
+                    document.getElementById("price_3000").type = "radio";
+                    document.getElementById("price_5000").type = "radio";
+                    document.getElementById("price_10000").type = "radio";
+                }
+                var valorspan = document.getElementById("price_3000_id").innerText;
+                if(price== valorspan.replace('$',''))
+                {
+                    document.getElementById("price_50").checked = 0;
+                    document.getElementById("price_100").checked = 0;
+                    document.getElementById("price_200").checked = 0;
+                    document.getElementById("price_300").checked = 0;
+                    document.getElementById("price_500").checked = 0;
+                    document.getElementById("price_1000").checked = 0;
+                    document.getElementById("price_2000").checked = 0;
+                    document.getElementById("price_3000").checked = 1;
+                    document.getElementById("price_5000").checked = 0;
+                    document.getElementById("price_10000").checked = 0;
+                    document.getElementById("price_50").style = "display:none;";
+                    document.getElementById("price_100").style = "display:none;";
+                    document.getElementById("price_200").style = "display:none;";
+                    document.getElementById("price_300").style = "display:none;";
+                    document.getElementById("price_500").style = "display:none;";
+                    document.getElementById("price_1000").style = "display:none;";
+                    document.getElementById("price_2000").style = "display:none;";
+                    document.getElementById("price_3000").style = "";
+                    document.getElementById("price_5000").style = "display:none;";
+                    document.getElementById("price_10000").style = "display:none;";
+                    document.getElementById("price_50").type = "radio";
+                    document.getElementById("price_100").type = "radio";
+                    document.getElementById("price_200").type = "radio";
+                    document.getElementById("price_300").type = "radio";
+                    document.getElementById("price_500").type = "radio";
+                    document.getElementById("price_1000").type = "radio";
+                    document.getElementById("price_2000").type = "radio";
+                    document.getElementById("price_3000").type = "hidden";
+                    document.getElementById("price_5000").type = "radio";
+                    document.getElementById("price_10000").type = "radio";
+                }
+                var valorspan = document.getElementById("price_5000_id").innerText;
+                if(price== valorspan.replace('$',''))
+                {
+                    document.getElementById("price_50").checked = 0;
+                    document.getElementById("price_100").checked = 0;
+                    document.getElementById("price_200").checked = 0;
+                    document.getElementById("price_300").checked = 0;
+                    document.getElementById("price_500").checked = 0;
+                    document.getElementById("price_1000").checked = 0;
+                    document.getElementById("price_2000").checked = 0;
+                    document.getElementById("price_3000").checked = 0;
+                    document.getElementById("price_5000").checked = 1;
+                    document.getElementById("price_10000").checked = 0;
+                    document.getElementById("price_50").style = "display:none;";
+                    document.getElementById("price_100").style = "display:none;";
+                    document.getElementById("price_200").style = "display:none;";
+                    document.getElementById("price_300").style = "display:none;";
+                    document.getElementById("price_500").style = "display:none;";
+                    document.getElementById("price_1000").style = "display:none;";
+                    document.getElementById("price_2000").style = "display:none;";
+                    document.getElementById("price_3000").style = "display:none;";
+                    document.getElementById("price_5000").style = "";
+                    document.getElementById("price_10000").style = "display:none;";
+                    document.getElementById("price_50").type = "radio";
+                    document.getElementById("price_100").type = "radio";
+                    document.getElementById("price_200").type = "radio";
+                    document.getElementById("price_300").type = "radio";
+                    document.getElementById("price_500").type = "radio";
+                    document.getElementById("price_1000").type = "radio";
+                    document.getElementById("price_2000").type = "radio";
+                    document.getElementById("price_3000").type = "radio";
+                    document.getElementById("price_5000").type = "hidden";
+                    document.getElementById("price_10000").type = "radio";
+                }
+                var valorspan = document.getElementById("price_10000_id").innerText;
+                if(price== valorspan.replace('$',''))
+                {
+                    document.getElementById("price_50").checked = 0;
+                    document.getElementById("price_100").checked = 0;
+                    document.getElementById("price_200").checked = 0;
+                    document.getElementById("price_300").checked = 0;
+                    document.getElementById("price_500").checked = 0;
+                    document.getElementById("price_1000").checked = 0;
+                    document.getElementById("price_2000").checked = 0;
+                    document.getElementById("price_3000").checked = 0;
+                    document.getElementById("price_5000").checked = 0;
+                    document.getElementById("price_10000").checked = 1;
+                    document.getElementById("price_50").style = "display:none;";
+                    document.getElementById("price_100").style = "display:none;";
+                    document.getElementById("price_200").style = "display:none;";
+                    document.getElementById("price_300").style = "display:none;";
+                    document.getElementById("price_500").style = "display:none;";
+                    document.getElementById("price_1000").style = "display:none;";
+                    document.getElementById("price_2000").style = "display:none;";
+                    document.getElementById("price_3000").style = "display:none;";
+                    document.getElementById("price_5000").style = "display:none;";
+                    document.getElementById("price_10000").style = "";
+                    document.getElementById("price_50").type = "radio";
+                    document.getElementById("price_100").type = "radio";
+                    document.getElementById("price_200").type = "radio";
+                    document.getElementById("price_300").type = "radio";
+                    document.getElementById("price_500").type = "radio";
+                    document.getElementById("price_1000").type = "radio";
+                    document.getElementById("price_2000").type = "radio";
+                    document.getElementById("price_3000").type = "radio";
+                    document.getElementById("price_5000").type = "radio";
+                    document.getElementById("price_10000").type = "hidden";
+                }
             }
         }
         function custom()
         {
             var num = document.getElementById('valorcustom'); 
-            if(num.value<10)
+            if(num.value<10) //diverrormore
             {
                 var element =  document.getElementById('diverrordiv');
+                if (typeof(element) != 'undefined' && element != null)
+                {
+                    element.remove();
+                }
+                var element =  document.getElementById('diverrormore');
                 if (typeof(element) != 'undefined' && element != null)
                 {
                     element.remove();
@@ -44,7 +414,7 @@ session_start();
                 var msgalertt = document.getElementById("warnning");
                 msgalertt.insertAdjacentHTML("beforeend", "<div id='diverrorless' class='tooltiperror error'><span class='arrow'></span><span class='text'>Can't be less than 10</span></div>");
             }
-            if(num.value>10)
+            if(num.value>=10)
             {
                 if(num.value%10==0)
                 {
@@ -60,13 +430,18 @@ session_start();
                         element.remove();
                         document.getElementById('spancustomprice').innerText="";
                     }
+                    var element =  document.getElementById('diverrormore');
+                    if (typeof(element) != 'undefined' && element != null)
+                    {
+                        element.remove();
+                    }
                     var cantidad = document.getElementById('valorcustom').value;
                     // spancustomprice
                     // spancustomsavings
                     if(cantidad!=0)
                     {
-                        var var1 = document.getElementById('variant_79');
-                        var var2 = document.getElementById('variant_78');
+                        var var1 = document.getElementById('variant_78');
+                        var var2 = document.getElementById('variant_79');
                         var var3 = document.getElementById('variant_80');
                         var var4 = document.getElementById('variant_81');
                         var var5 = document.getElementById('variant_77');
@@ -96,26 +471,209 @@ session_start();
                             size1 = document.getElementById('width').value;
                             size2 = document.getElementById('height').value;
                         }
-                        var precioxunidadW = .45+(size1*0.06); //.06
-                        var precioxunidadH = .45+(size2*0.06); //.06
+                        
+                       // var precioxunidadW = .44+(size1*0.06); //.06
+                        //var precioxunidadH = .44+(size2*0.06); //.06 54 48 12
+                        if(size1==1)
+                        {
+                            var precioxunidadW = size1*0.47; //.06
+                        }
+                        if(size2==1)
+                        {
+                            var precioxunidadH = size2*0.47; //.06 54 48 12
+                        }
+                        if(size1>1)
+                        {
+                            var precioxunidadW = size1*0.285; //.06
+                        }
+                        if(size2>1)
+                        {
+                            var precioxunidadH = size2*0.285; //.06 54 48 12
+                        }
+                        if(size1>2)
+                        {
+                            var precioxunidadW = size1*0.243; //.06
+                        }
+                        if(size2>2)
+                        {
+                            var precioxunidadH = size2*0.243; //.06 54 48 12
+                        }
+                        if(size1>25)
+                        {
+                            var precioxunidadW = size1*0.2455; //.06
+                        }
+                        if(size2>15)
+                        {
+                            var precioxunidadH = size2*0.2455; //.06 54 48 12
+                        }
+                        if(size1>30)
+                        {
+                            var precioxunidadW = size1*0.3055; //.06
+                        }
+                        if(size2>20)
+                        {
+                            var precioxunidadH = size2*0.3055; //.06 54 48 12
+                        }
                         var precioxunidad = precioxunidadW + precioxunidadH;
                         if(cantidad < 60)
                         {
                             
                             var price=precioxunidad*cantidad;
+                            document.getElementById('quantity_custom').value = cantidad;
                             document.getElementById('spancustomprice').innerText="$"+ price.toFixed();
+                            document.getElementById('price_custom').value=price.toFixed();
                             return;
                         }
                         if(cantidad > 50)
                         {
-                            if(cantidad < 100)
+                            document.getElementById('quantity_custom').value = cantidad;
+                            
+                            var descuento=0,iter=0,desctotal=0,inicio=0;
+                            
+
+                            //var precioxunidad = precioxunidadW + precioxunidadH;
+                            //alert(precioxunidadH);
+                            var price=precioxunidad*50;
+                            cant60=12-((.59*size1)+(.59*size2));
+                            cant100=45-((1.5*size1)+(1.5*size2));
+                            cant200=67-((1.8*size1)+(1.8*size2)); 
+                            cant300=77-((1.8*size1)+(1.8*size2)); 
+                            cant500=84-((2.4*size1)+(2.4*size2)); 
+                            cant1000=93-((2.4*size1)+(2.4*size2)); 
+                            cant2000=94-((2.4*size1)+(2.4*size2)); 
+                            cant3000=96-((2.4*size1)+(2.4*size2)); 
+                            cant5000=98-((2.1*size1)+(2.1*size2)); 
+                            cant10000=99-((2.1*size1)+(2.1*size2));
+                            scant100=cant100;
+                            scant200=cant200;
+                            scant300=cant300;
+                            scant500=cant500;
+                            scant1000=cant1000; 
+                            scant2000=cant2000;
+                            scant3000=cant3000;
+                            scant5000=cant5000;
+                            scant10000=cant10000;
+                            
+                            if(scant1000 < 24)
                             {
-                                var descuento=0.0675;
-                                if(cantidad==60)
-                                {
-                                    var price=(precioxunidad*cantidad)-((precioxunidad*cantidad)*(descuento+0.12));
-                                    document.getElementById('spancustomprice').innerText="$"+ price.toFixed();
-                                }
+                                scant1000 = 24;
+                            } 
+                            if(scant2000 < 24 )
+                            {
+                                scant2000 = 24;
+                            } 
+                            if(scant3000 < 24 )
+                            {
+                                scant3000 = 24;
+                            } 
+                            if( scant5000 < 24 )
+                            {
+                                scant5000 = 24;
+                            } 
+                            if( scant10000 < 24)
+                            {
+                                scant10000 = 24;
+                            }
+                            if(scant200 < 23 )
+                            {
+                                scant200 = 23;
+                            } 
+                            if( scant300 < 23 )
+                            {
+                                scant300 = 23;
+                            } 
+                            if( scant500 < 23)
+                            {
+                                scant500 = 23;
+                            }
+                            if(cant100 < 13)
+                            {
+                                scant100 = 13;
+                            }
+                            if(cant60 < 4)
+                            {
+                                scant60 = 4;
+                            }
+
+                            if(cantidad>=60 && cantidad<100)
+                            {
+                                descuento = (cant100-cant60)/40;
+                                desctotal = cant60;
+                                inicio=60;
+                            }
+                            if(cantidad>=100 && cantidad<200)
+                            {
+                                descuento = (cant200-cant100)/100;
+                                desctotal = cant100;
+                                inicio=100;
+                            }
+                            if(cantidad>=200 && cantidad<300)
+                            {
+                                descuento = (cant300-cant200)/100;
+                                desctotal = cant200;
+                                inicio=200;
+                            }
+                            if(cantidad>=300 && cantidad<500)
+                            {   
+                                descuento = (cant500-cant300)/200;
+                                desctotal = cant300;
+                                inicio=300;
+                            }
+                            if(cantidad>=500 && cantidad<1000)
+                            {
+                                descuento = (cant1000-cant500)/500;
+                                desctotal = cant500;
+                                inicio=500;
+                            }
+                            if(cantidad>=1000 && cantidad<2000)
+                            {
+                                descuento = (cant2000-cant1000)/1000;
+                                desctotal = cant1000;
+                                inicio=1000;
+                            }
+                            if(cantidad>=2000 && cantidad<3000)
+                            {
+                                descuento = (cant3000-cant2000)/1000;
+                                desctotal = cant2000;
+                                inicio=2000;
+                            }
+                            if(cantidad>=3000 && cantidad<5000)
+                            {
+                                descuento = (cant5000-cant3000)/2000;
+                                desctotal = cant3000;
+                                inicio=3000;
+                            }
+                            if(cantidad>=5000 && cantidad<10000)
+                            {
+                                descuento = (cant10000-cant5000)/5000;
+                                desctotal = cant5000;
+                                inicio=5000;
+                            }
+                            if(cantidad>=10000 && cantidad<200000)
+                            {
+                                descuento = 0;
+                                desctotal = cant10000;
+                                inicio=10000;
+                            }
+                            for(i=inicio;i<cantidad;i++)
+                            {
+                                iter += descuento;
+                            }
+                           
+                            descuento =  desctotal + iter;
+                            //alert(precioxunidad*cantidad);
+                            var price=(precioxunidad*cantidad)-(((precioxunidad*cantidad)/100)*descuento);
+                            //var price=precioxunidad*cantidad-precioxunidad*cantidad*descuento;
+                            document.getElementById('spancustomprice').innerText="$"+ price.toFixed();
+                            document.getElementById('price_custom').value=price.toFixed();
+                            //descuento = descuento * 100;
+                            document.getElementById('spancustomsavings').innerText="Save " + descuento.toFixed()+"%";
+                            if(cantidad>200000)
+                            {
+                                
+                                var msgalertt = document.getElementById("warnning");
+                                msgalertt.insertAdjacentHTML("beforeend", "<div id='diverrormore' class='tooltiperror error'><span class='arrow'></span><span class='text'>Can't be more than 200000</span></div>");
+                            
                             }
                         }
                     } 
@@ -127,6 +685,11 @@ session_start();
                     {
                         element.remove();
                     }
+                    var element =  document.getElementById('diverrormore');
+                    if (typeof(element) != 'undefined' && element != null)
+                    {
+                        element.remove();
+                    }
                     var msgaler = document.getElementById("warnning");
                     msgaler.insertAdjacentHTML("beforeend", "<div id='diverrordiv' class='tooltiperror error'><span class='arrow'></span><span class='text'>Must be a multiple of 10</span></div>");
                 }
@@ -134,7 +697,8 @@ session_start();
             if(num.value==0 || num.value=="")
             {
                 document.getElementById('spancustomprice').innerText="";
-                document.getElementById('spancustomprice').innerText="";
+                document.getElementById('price_custom').value="";
+                document.getElementById('spancustomsavings').innerText="";
             }
         }
         function CustomsizeWandH()
@@ -142,13 +706,17 @@ session_start();
             var remember = document.getElementById('variant_77');
             if (remember.checked)
             {
+                if (document.getElementById('custom_dimensions_field') !=null) 
+                   document.getElementById("custom_dimensions_field").remove();
+
                 var element =  document.getElementById('variant_77_L');
-                element.insertAdjacentHTML("afterend", "<span id='custom_dimensions_field' class='custom_dimensions'>&nbsp;<span class='inputWrapper' id='customwidth'><input id='width' name='width' placeholder='Width' size='4' step='0.01' type='number' onkeyup='CheckcustomW()'></span><span> × </span><span class='inputWrapper' id='customheight'><input id='height' name='height' placeholder='Height' size='4' step='0.01' type='number' onkeyup='CheckcustomH()'></span></span>"); 
+               
+                element.insertAdjacentHTML("afterend", "<span id='custom_dimensions_field' class='custom_dimensions'>&nbsp;<span class='inputWrapper' id='customwidth'><input id='width' name='width' placeholder='Width' size='4' step='0.01' type='number' onkeyup='CheckcustomH()'></span><span> × </span><span class='inputWrapper' id='customheight'><input id='height' name='height' placeholder='Height' size='4' step='0.01' type='number' onkeyup='CheckcustomH()'></span></span>"); 
                 var elemento = document.getElementById("variant-quantities");
                 elemento.className += " disabled";
                 var price = document.getElementById('price_10000_id').innerText;
-                //price = price.replace('$', '');
-                //alert(price);
+                
+                
             } 
             else
             {
@@ -157,160 +725,304 @@ session_start();
                 {
                     element.remove();
                 }
-                var var1 = document.getElementById('variant_79');
-                var var2 = document.getElementById('variant_78');
+                if(document.getElementById('valorcustom'))
+                {
+                    document.getElementById('valorcustom').value="";//
+                    document.getElementById('spancustomprice').innerText="";//
+                    document.getElementById('spancustomsavings').innerText="";//
+                }
+                var var1 = document.getElementById('variant_78');
+                var var2 = document.getElementById('variant_79');
                 var var3 = document.getElementById('variant_80');
                 var var4 = document.getElementById('variant_81');
                 var var5 = document.getElementById('variant_77');
+                var size1=0,size2=0;
                 if(var1.checked)
-                {
-                    var precioxunidad = 1.1400000000000001;
-                    var price=precioxunidad*50;
-                    document.getElementById('price_50_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*100)/100*70;
-                    document.getElementById('price_100_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*200)/100*60;
-                    document.getElementById('price_200_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*300)/100*65;
-                    document.getElementById('price_300_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*500)/100*50;
-                    document.getElementById('price_500_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*1000)/100*45;
-                    document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*2000)/100*40;
-                    document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*3000)/100*38;
-                    document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*5000)/100*32;
-                    document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*10000)/100*30;
-                    document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
-                }
-                if(var2.checked)
-                {
-                    var precioxunidad = 1.26;
-                    var price=precioxunidad*50;
-                    document.getElementById('price_50_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*100)/100*70;
-                    document.getElementById('price_100_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*200)/100*60;
-                    document.getElementById('price_200_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*300)/100*65;
-                    document.getElementById('price_300_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*500)/100*50;
-                    document.getElementById('price_500_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*1000)/100*45;
-                    document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*2000)/100*40;
-                    document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*3000)/100*38;
-                    document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*5000)/100*32;
-                    document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*10000)/100*30;
-                    document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
-                }
-                if(var3.checked)
-                {
-                    var precioxunidad = 1.38;
-                    var price=precioxunidad*50;
-                    document.getElementById('price_50_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*100)/100*70;
-                    document.getElementById('price_100_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*200)/100*60;
-                    document.getElementById('price_200_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*300)/100*65;
-                    document.getElementById('price_300_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*500)/100*50;
-                    document.getElementById('price_500_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*1000)/100*45;
-                    document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*2000)/100*40;
-                    document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*3000)/100*38;
-                    document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*5000)/100*32;
-                    document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*10000)/100*30;
-                    document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
-                }
-                if(var4.checked)
-                {
-                    var precioxunidad = 1.5;
-                    var price=precioxunidad*50;
-                    document.getElementById('price_50_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*100)/100*70;
-                    document.getElementById('price_100_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*200)/100*60;
-                    document.getElementById('price_200_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*300)/100*65;
-                    document.getElementById('price_300_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*500)/100*50;
-                    document.getElementById('price_500_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*1000)/100*45;
-                    document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*2000)/100*40;
-                    document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*3000)/100*38;
-                    document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*5000)/100*32;
-                    document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*10000)/100*30;
-                    document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
-                }
-            }
-        }
-        function CheckcustomW()
-        {
-            var num = document.getElementById('width');
-            var num2 = document.getElementById('height');
-            if(num.value>36)
-            {
-                var msgalertt = document.getElementById("customwidth");
-                msgalertt.insertAdjacentHTML("afterbegin", "<div class='tooltiperror' id='tooltiperrorW'><span class='arrow'></span><span class='text'>Max size is 36 inches</span></div>");
-            }
-            else
-            {
-                var element =  document.getElementById('tooltiperrorW');
-                if (typeof(element) != 'undefined' && element != null)
-                {
-                    element.remove();
-                }
-                if(num.value!=0 && num2.value!=0)
                 {
                     var elemento = document.getElementById("variant-quantities");
                     elemento.className = " options radio";
-                    var precioxunidadW = .45+(num.value*0.06); //.06
-                    var precioxunidadH = .45+(num2.value*0.06); //.06
+                    size1=2;
+                    size2=2;
+                    var precioxunidadW = .44+(2*0.06); //.06
+                    var precioxunidadH = .44+(2*0.06); //.06 54 48 12
                     var precioxunidad = precioxunidadW + precioxunidadH;
+                    //var precioxunidad = 1.08;
                     var price=precioxunidad*50;
+                    /*
+                        cant60=.12,
+                        cant100=.39, 
+                        cant200=.60, 
+                        cant300=.68, 
+                        cant500=.75, 
+                        cant1000=.81, 
+                        cant2000=.85, 
+                        cant3000=.86, 
+                        cant5000=.88, 
+                        cant10000=.90;
+                        scant100=cant100*100;
+                        scant200=cant200*100;
+                        scant300=cant300*100;
+                        scant500=cant500*100;
+                        scant1000=cant1000*100; 
+                        scant2000=cant2000*100;
+                        scant3000=cant3000*100;
+                        scant5000=cant5000*100;
+                        scant10000=cant10000*100;
+                    */
                     
-                    document.getElementById('price_50_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*100)/100*70;
-                    document.getElementById('price_100_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*200)/100*60;
-                    document.getElementById('price_200_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*300)/100*65;
-                    document.getElementById('price_300_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*500)/100*50;
-                    document.getElementById('price_500_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*1000)/100*45;
-                    document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*2000)/100*40;
-                    document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*3000)/100*38;
-                    document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*5000)/100*32;
-                    document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
-                    var price=(precioxunidad*10000)/100*30;
-                    document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
                 }
-                else
+                if(var2.checked)
                 {
                     var elemento = document.getElementById("variant-quantities");
-                    elemento.className += " disabled";
+                    elemento.className = " options radio";
+                    size1=3;
+                    size2=3;
+                    var precioxunidadW = .44+(3*0.06); //.06
+                    var precioxunidadH = .44+(3*0.06); //.06 54 48 12
+                    var precioxunidad = precioxunidadW + precioxunidadH;
+                    //var precioxunidad = 1.2;
+                    var price=precioxunidad*50;
+                   /*
+                        cant60=.12,
+                        cant100=.35, 
+                        cant200=.54, 
+                        cant300=.61, 
+                        cant500=.68, 
+                        cant1000=.74, 
+                        cant2000=.79, 
+                        cant3000=.81, 
+                        cant5000=.83, 
+                        cant10000=.85;
+                        scant100=cant100*100;
+                        scant200=cant200*100;
+                        scant300=cant300*100;
+                        scant500=cant500*100;
+                        scant1000=cant1000*100; 
+                        scant2000=cant2000*100;
+                        scant3000=cant3000*100;
+                        scant5000=cant5000*100;
+                        scant10000=cant10000*100;
+                    */
                 }
+                if(var3.checked)
+                {
+                    var elemento = document.getElementById("variant-quantities");
+                    elemento.className = " options radio";
+                    size1=4;
+                    size2=4;
+                    var precioxunidadW = .44+(4*0.06); //.06
+                    var precioxunidadH = .44+(4*0.06); //.06 54 48 12
+                    var precioxunidad = precioxunidadW + precioxunidadH;
+                    //var precioxunidad = 1.3199999999999998;
+                    var price=precioxunidad*50;
+                    /*
+                        cant60=.10,
+                        cant100=.31, 
+                        cant200=.49, 
+                        cant300=.56, 
+                        cant500=.62, 
+                        cant1000=.69, 
+                        cant2000=.74, 
+                        cant3000=.76, 
+                        cant5000=.78, 
+                        cant10000=.81;
+                        scant100=cant100*100;
+                        scant200=cant200*100;
+                        scant300=cant300*100;
+                        scant500=cant500*100;
+                        scant1000=cant1000*100; 
+                        scant2000=cant2000*100;
+                        scant3000=cant3000*100;
+                        scant5000=cant5000*100;
+                        scant10000=cant10000*100;
+                    */
+                }
+                if(var4.checked)
+                {
+                    var elemento = document.getElementById("variant-quantities");
+                    elemento.className = " options radio";
+                    size1=5;
+                    size2=5;
+                    var precioxunidadW = .44+(5*0.06); //.06
+                    var precioxunidadH = .44+(5*0.06); //.06 54 48 12
+                    var precioxunidad = precioxunidadW + precioxunidadH;
+                    //var precioxunidad = 1.44;
+                    var price=precioxunidad*50;
 
+                   /* cant60=.09,
+                    cant100=.28, 
+                    cant200=.44, 
+                    cant300=.51, 
+                    cant500=.58, 
+                    cant1000=.64, 
+                    cant2000=.69, 
+                    cant3000=.72, 
+                    cant5000=.75, 
+                    cant10000=.76;
+                    scant100=cant100*100;
+                    scant200=cant200*100;
+                    scant300=cant300*100;
+                    scant500=cant500*100;
+                    scant1000=cant1000*100; 
+                    scant2000=cant2000*100;
+                    scant3000=cant3000*100;
+                    scant5000=cant5000*100;
+                    scant10000=cant10000*100;   */             
+                }
+                        //desc + 6
+                            if(size1==1)
+                            {
+                                var precioxunidadW = size1*0.47; //.06
+                            }
+                            if(size2==1)
+                            {
+                                var precioxunidadH = size2*0.47; //.06 54 48 12
+                            }
+                            if(size1>1)
+                            {
+                                var precioxunidadW = size1*0.285; //.06
+                            }
+                            if(size2>1)
+                            {
+                                var precioxunidadH = size2*0.285; //.06 54 48 12
+                            }
+                            if(size1>2)
+                            {
+                                var precioxunidadW = size1*0.243; //.06
+                            }
+                            if(size2>2)
+                            {
+                                var precioxunidadH = size2*0.243; //.06 54 48 12
+                            }
+                            if(size1>25)
+                            {
+                                var precioxunidadW = size1*0.2455; //.06
+                            }
+                            if(size2>15)
+                            {
+                                var precioxunidadH = size2*0.2455; //.06 54 48 12
+                            }
+                            if(size1>30)
+                            {
+                                var precioxunidadW = size1*0.3055; //.06
+                            }
+                            if(size2>20)
+                            {
+                                var precioxunidadH = size2*0.3055; //.06 54 48 12
+                            }
+                            var precioxunidad = precioxunidadW + precioxunidadH;
+                            //alert(precioxunidadH);
+                            var price=precioxunidad*50;
+                            cant60=12-((.59*size1)+(.59*size2));
+                            cant100=45-((1.5*size1)+(1.5*size2));
+                            cant200=67-((1.8*size1)+(1.8*size2)); 
+                            cant300=77-((1.8*size1)+(1.8*size2)); 
+                            cant500=84-((2.4*size1)+(2.4*size2)); 
+                            cant1000=93-((2.4*size1)+(2.4*size2)); 
+                            cant2000=94-((2.4*size1)+(2.4*size2)); 
+                            cant3000=96-((2.4*size1)+(2.4*size2)); 
+                            cant5000=98-((2.1*size1)+(2.1*size2)); 
+                            cant10000=99-((2.1*size1)+(2.1*size2));
+                            scant100=cant100;
+                            scant200=cant200;
+                            scant300=cant300;
+                            scant500=cant500;
+                            scant1000=cant1000; 
+                            scant2000=cant2000;
+                            scant3000=cant3000;
+                            scant5000=cant5000;
+                            scant10000=cant10000;
+                            
+                            if(scant1000 < 24)
+                            {
+                                scant1000 = 24;
+                            } 
+                            if(scant2000 < 24 )
+                            {
+                                scant2000 = 24;
+                            } 
+                            if(scant3000 < 24 )
+                            {
+                                scant3000 = 24;
+                            } 
+                            if( scant5000 < 24 )
+                            {
+                                scant5000 = 24;
+                            } 
+                            if( scant10000 < 24)
+                            {
+                                scant10000 = 24;
+                            }
+                            if(scant200 < 23 )
+                            {
+                                scant200 = 23;
+                            } 
+                            if( scant300 < 23 )
+                            {
+                                scant300 = 23;
+                            } 
+                            if( scant500 < 23)
+                            {
+                                scant500 = 23;
+                            }
+                            if(cant100 < 13)
+                            {
+                                scant100 = 13;
+                            }
+                            if(cant60 < 4)
+                            {
+                                scant60 = 4;
+                            }
+
+                    document.getElementById('saving_1').innerText="Save " + scant100.toFixed()+"%";
+                    document.getElementById('saving_2').innerText="Save " + scant200.toFixed()+"%";
+                    document.getElementById('saving_3').innerText="Save " + scant300.toFixed()+"%";
+                    document.getElementById('saving_4').innerText="Save " + scant500.toFixed()+"%";
+                    document.getElementById('saving_5').innerText="Save " + scant1000.toFixed()+"%";
+                    document.getElementById('saving_6').innerText="Save " + scant2000.toFixed()+"%";
+                    document.getElementById('saving_7').innerText="Save " + scant3000.toFixed()+"%";
+                    document.getElementById('saving_8').innerText="Save " + scant5000.toFixed()+"%";
+                    document.getElementById('saving_9').innerText="Save " + scant10000.toFixed()+"%";
+
+                    document.getElementById('price_50_id').innerText="$"+ price.toFixed();
+                    document.getElementById("price_50").value = price.toFixed();
+                    document.getElementById("quantity_50").setAttribute("onclick", "Custom("+price.toFixed()+");");
+                    var price=(precioxunidad*100)-((precioxunidad*100)/100*scant100);
+                    document.getElementById('price_100_id').innerText="$"+ price.toFixed();
+                    document.getElementById("price_100").value = price.toFixed();
+                    document.getElementById("quantity_100").setAttribute("onclick", "Custom("+price.toFixed()+");");
+                    var price=(precioxunidad*200)-((precioxunidad*200)/100*scant200);
+                    document.getElementById('price_200_id').innerText="$"+ price.toFixed();
+                    document.getElementById("price_200").value = price.toFixed();
+                    document.getElementById("quantity_200").setAttribute("onclick", "Custom("+price.toFixed()+");");
+                    var price=(precioxunidad*300)-((precioxunidad*300)/100*scant300);
+                    document.getElementById('price_300_id').innerText="$"+ price.toFixed();
+                    document.getElementById("price_300").value = price.toFixed();
+                    document.getElementById("quantity_300").setAttribute("onclick", "Custom("+price.toFixed()+");");
+                    var price=(precioxunidad*500)-((precioxunidad*500)/100*scant500);
+                    document.getElementById('price_500_id').innerText="$"+ price.toFixed();
+                    document.getElementById("price_500").value = price.toFixed();
+                    document.getElementById("quantity_500").setAttribute("onclick", "Custom("+price.toFixed()+");");
+                    var price=(precioxunidad*1000)-((precioxunidad*1000)/100*scant1000);
+                    document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
+                    document.getElementById("price_1000").value = price.toFixed();
+                    document.getElementById("quantity_1000").setAttribute("onclick", "Custom("+price.toFixed()+");");
+                    var price=(precioxunidad*2000)-((precioxunidad*2000)/100*scant2000);
+                    document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
+                    document.getElementById("price_2000").value = price.toFixed();
+                    document.getElementById("quantity_2000").setAttribute("onclick", "Custom("+price.toFixed()+");");
+                    var price=(precioxunidad*3000)-((precioxunidad*3000)/100*scant3000);
+                    document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
+                    document.getElementById("price_3000").value = price.toFixed();
+                    document.getElementById("quantity_3000").setAttribute("onclick", "Custom("+price.toFixed()+");");
+                    var price=(precioxunidad*5000)-((precioxunidad*5000)/100*scant5000);
+                    document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
+                    document.getElementById("price_5000").value = price.toFixed();
+                    document.getElementById("quantity_5000").setAttribute("onclick", "Custom("+price.toFixed()+");");
+                    var price=(precioxunidad*10000)-((precioxunidad*10000)/100*scant10000);
+                    document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
+                    document.getElementById("price_10000").value = price.toFixed();
+                    document.getElementById("quantity_10000").setAttribute("onclick", "Custom("+price.toFixed()+");");
             }
         }
         function CheckcustomH()
@@ -321,18 +1033,46 @@ session_start();
             {
                 var msgalertt = document.getElementById("customheight");
                 msgalertt.insertAdjacentHTML("afterbegin", "<div class='tooltiperror' id='tooltiperrorH'><span class='arrow'></span><span class='text'>Max size is 24 inches</span></div>");
+            }if(num2.value>36)
+            {
+                var msgalertt = document.getElementById("customwidth");
+                msgalertt.insertAdjacentHTML("afterbegin", "<div class='tooltiperror' id='tooltiperrorW'><span class='arrow'></span><span class='text'>Max size is 36 inches</span></div>");
             }
-            else
+            if(num2.value<=36 && num.value<=24)
             {
                 var element =  document.getElementById('tooltiperrorH');
                 if (typeof(element) != 'undefined' && element != null)
                 {
                     element.remove();
                 }
-                if(num.value!=0 && num2.value!=0)
+                
+                var element2 =  document.getElementById('tooltiperrorW');
+                if (typeof(element2) != 'undefined' && element2 != null)
+                {
+                    element2.remove();
+                }
+                if(num.value<1)
+                {
+                    var msgalertt = document.getElementById("customheight");
+                    msgalertt.insertAdjacentHTML("afterbegin", "<div class='tooltiperror' id='tooltiperrorH'><span class='arrow'></span><span class='text'>Min size is 1 inches</span></div>");
+                    var elemento = document.getElementById("variant-quantities");
+                    var elemento2 = document.getElementById("continue");
+                    elemento.className += " disabled";
+                    elemento2.className += " disabled";
+                }else if(num2.value<1)
+                {
+                    var msgalertt = document.getElementById("customwidth");
+                    msgalertt.insertAdjacentHTML("afterbegin", "<div class='tooltiperror' id='tooltiperrorW'><span class='arrow'></span><span class='text'>Min size is 1 inches</span></div>");
+                    var elemento = document.getElementById("variant-quantities");
+                    var elemento2 = document.getElementById("continue");
+                    elemento.className += " disabled";//continue
+                    elemento2.className += " disabled";
+                }else if(num.value!=0 && num2.value!=0)
                 {
                     var elemento = document.getElementById("variant-quantities");
                     elemento.className = " options radio";
+                    var elemento2 = document.getElementById("continue");
+                    elemento2.className = " continue";
                     pricescustomWandH1(num2.value,num.value);
                 }
                 else
@@ -341,154 +1081,184 @@ session_start();
                     elemento.className += " disabled";
                 }
             }
-            function pricescustomWandH1(widthC,heightC)
+        }
+        function pricescustomWandH1(widthC,heightC)
+        {
+           
+            if(widthC==1)
             {
-                var precioxunidadW = .45+(widthC*0.06); //.06
-                var precioxunidadH = .45+(heightC*0.06); //.06
-                var precioxunidad = precioxunidadW + precioxunidadH;
-                var price=precioxunidad*50;
-                
-                document.getElementById('price_50_id').innerText="$"+ price.toFixed();
-                var price=(precioxunidad*100)/100*70;
-                document.getElementById('price_100_id').innerText="$"+ price.toFixed();
-                var price=(precioxunidad*200)/100*60;
-                document.getElementById('price_200_id').innerText="$"+ price.toFixed();
-                var price=(precioxunidad*300)/100*65;
-                document.getElementById('price_300_id').innerText="$"+ price.toFixed();
-                var price=(precioxunidad*500)/100*50;
-                document.getElementById('price_500_id').innerText="$"+ price.toFixed();
-                var price=(precioxunidad*1000)/100*45;
-                document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
-                var price=(precioxunidad*2000)/100*40;
-                document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
-                var price=(precioxunidad*3000)/100*38;
-                document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
-                var price=(precioxunidad*5000)/100*32;
-                document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
-                var price=(precioxunidad*10000)/100*30;
-                document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
-                return;
+                var precioxunidadW = widthC*0.47; //.06
             }
+            if(heightC==1)
+            {
+                var precioxunidadH = heightC*0.47; //.06 54 48 12
+            }
+            if(widthC>1)
+            {
+                var precioxunidadW = widthC*0.285; //.06
+            }
+            if(heightC>1)
+            {
+                var precioxunidadH = heightC*0.285; //.06 54 48 12
+            }
+            if(widthC>2)
+            {
+                var precioxunidadW = widthC*0.243; //.06
+            }
+            if(heightC>2)
+            {
+                var precioxunidadH = heightC*0.243; //.06 54 48 12
+            }
+            if(widthC>25)
+            {
+                var precioxunidadW = widthC*0.2455; //.06
+            }
+            if(heightC>15)
+            {
+                var precioxunidadH = heightC*0.2455; //.06 54 48 12
+            }
+            if(widthC>30)
+            {
+                var precioxunidadW = widthC*0.3055; //.06
+            }
+            if(heightC>20)
+            {
+                var precioxunidadH = heightC*0.3055; //.06 54 48 12
+            }
+            var precioxunidad = precioxunidadW + precioxunidadH;
+            //alert(precioxunidadH);
+            var price=precioxunidad*50;
+            cant60=12-((.59*widthC)+(.59*heightC));
+            cant100=45-((1.5*widthC)+(1.5*heightC));
+            cant200=67-((1.8*widthC)+(1.8*heightC)); 
+            cant300=77-((1.8*widthC)+(1.8*heightC)); 
+            cant500=84-((2.4*widthC)+(2.4*heightC)); 
+            cant1000=93-((2.4*widthC)+(2.4*heightC)); 
+            cant2000=94-((2.4*widthC)+(2.4*heightC)); 
+            cant3000=96-((2.4*widthC)+(2.4*heightC)); 
+            cant5000=98-((2.1*widthC)+(2.1*heightC)); 
+            cant10000=99-((2.1*widthC)+(2.1*heightC));
+            scant100=cant100;
+            scant200=cant200;
+            scant300=cant300;
+            scant500=cant500;
+            scant1000=cant1000; 
+            scant2000=cant2000;
+            scant3000=cant3000;
+            scant5000=cant5000;
+            scant10000=cant10000;
+            
+            if(scant1000 < 24)
+            {
+                scant1000 = 24;
+            } 
+            if(scant2000 < 24 )
+            {
+                scant2000 = 24;
+            } 
+            if(scant3000 < 24 )
+            {
+                scant3000 = 24;
+            } 
+            if( scant5000 < 24 )
+            {
+                scant5000 = 24;
+            } 
+            if( scant10000 < 24)
+            {
+                scant10000 = 24;
+            }
+            if(scant200 < 23 )
+            {
+                scant200 = 23;
+            } 
+            if( scant300 < 23 )
+            {
+                scant300 = 23;
+            } 
+            if( scant500 < 23)
+            {
+                scant500 = 23;
+            }
+            if(cant100 < 13)
+            {
+                scant100 = 13;
+            }
+            if(cant60 < 4)
+            {
+                scant60 = 4;
+            }
+            document.getElementById('saving_1').innerText="Save " + scant100.toFixed()+"%";
+            document.getElementById('saving_2').innerText="Save " + scant200.toFixed()+"%";
+            document.getElementById('saving_3').innerText="Save " + scant300.toFixed()+"%";
+            document.getElementById('saving_4').innerText="Save " + scant500.toFixed()+"%";
+            document.getElementById('saving_5').innerText="Save " + scant1000.toFixed()+"%";
+            document.getElementById('saving_6').innerText="Save " + scant2000.toFixed()+"%";
+            document.getElementById('saving_7').innerText="Save " + scant3000.toFixed()+"%";
+            document.getElementById('saving_8').innerText="Save " + scant5000.toFixed()+"%";
+            document.getElementById('saving_9').innerText="Save " + scant10000.toFixed()+"%";
+
+            document.getElementById('price_50_id').innerText="$"+ price.toFixed();
+            document.getElementById("price_50").value = price.toFixed();
+            document.getElementById("quantity_50").setAttribute("onclick", "Custom("+price.toFixed()+");");
+            var price=(precioxunidad*100)-((precioxunidad*100)/100*scant100);
+            document.getElementById('price_100_id').innerText="$"+ price.toFixed();
+            document.getElementById("price_100").value = price.toFixed();
+            document.getElementById("quantity_100").setAttribute("onclick", "Custom("+price.toFixed()+");");
+            var price=(precioxunidad*200)-((precioxunidad*200)/100*scant200);
+            document.getElementById('price_200_id').innerText="$"+ price.toFixed();
+            document.getElementById("price_200").value = price.toFixed();
+            document.getElementById("quantity_200").setAttribute("onclick", "Custom("+price.toFixed()+");");
+            var price=(precioxunidad*300)-((precioxunidad*300)/100*scant300);
+            document.getElementById('price_300_id').innerText="$"+ price.toFixed();
+            document.getElementById("price_300").value = price.toFixed();
+            document.getElementById("quantity_300").setAttribute("onclick", "Custom("+price.toFixed()+");");
+            var price=(precioxunidad*500)-((precioxunidad*500)/100*scant500);
+            document.getElementById('price_500_id').innerText="$"+ price.toFixed();
+            document.getElementById("price_500").value = price.toFixed();
+            document.getElementById("quantity_500").setAttribute("onclick", "Custom("+price.toFixed()+");");
+            var price=(precioxunidad*1000)-((precioxunidad*1000)/100*scant1000);
+            document.getElementById('price_1000_id').innerText="$"+ price.toFixed();
+            document.getElementById("price_1000").value = price.toFixed();
+            document.getElementById("quantity_1000").setAttribute("onclick", "Custom("+price.toFixed()+");");
+            var price=(precioxunidad*2000)-((precioxunidad*2000)/100*scant2000);
+            document.getElementById('price_2000_id').innerText="$"+ price.toFixed();
+            document.getElementById("price_2000").value = price.toFixed();
+            document.getElementById("quantity_2000").setAttribute("onclick", "Custom("+price.toFixed()+");");
+            var price=(precioxunidad*3000)-((precioxunidad*3000)/100*scant3000);
+            document.getElementById('price_3000_id').innerText="$"+ price.toFixed();
+            document.getElementById("price_3000").value = price.toFixed();
+            document.getElementById("quantity_3000").setAttribute("onclick", "Custom("+price.toFixed()+");");
+            var price=(precioxunidad*5000)-((precioxunidad*5000)/100*scant5000);
+            document.getElementById('price_5000_id').innerText="$"+ price.toFixed();
+            document.getElementById("price_5000").value = price.toFixed();
+            document.getElementById("quantity_5000").setAttribute("onclick", "Custom("+price.toFixed()+");");
+            var price=(precioxunidad*10000)-((precioxunidad*10000)/100*scant10000);
+            document.getElementById('price_10000_id').innerText="$"+ price.toFixed();
+            document.getElementById("price_10000").value = price.toFixed();
+            document.getElementById("quantity_10000").setAttribute("onclick", "Custom("+price.toFixed()+");");
+            return;
+        }
+        function CloseHelpSize()
+        {
+            var modal = document.getElementById("size-help");
+            modal.style.display = "none";
+        }
+        function HelpSize()
+        {
+            var modal = document.getElementById("size-help");
+            modal.style.display = "flex";
         }
     </script>
+    <style>
+         #variant-options li:hover, #variant-quantities  li:hover{
+            background-color: lightgray !important;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">      
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="text-muted fa fa-bars"></i>
-                </button>
-            </div>
-            <a href="index.php" class="navbar-brand d-flex" style="padding-top: 5px;">
-                <img src="/assets/Logo_2.png" width="30" height="25">
-                <h4 style="color: #582707;" class="dt">Acme</h4>
-                <h4 style="color: #f26922;" class="dt">Stickers</h4>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link"style="color: #582707;" href="custom-stickers.php">Stickers</a></li> 
-                </ul>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex:0.5;">
-                <ul class="navbar-nav mr-auto">
-                    <li><a href="/cart.php"><i  class="nav-link fas fa-shopping-cart" style="color: #582707;"></i></a></li>
-                    <!--<li class="nav-item dropdown">
-                        <div class="AccountLinks">
-                            <div class="wrapper">
-                            <a class="nav-link dropdown-toggle toggle HeaderNavItem" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                                <img alt="" data-testid="AccountMenuAvatar" src="" srcset="" class="avatar small">
-                            </a>
-                            <div class="dropdown-menu flyout" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item userItem account" href="#">
-                                        <span class="userAvatar">
-                                            <img alt="" data-testid="MenuAvatar" src="" srcset="" class="avatarB medium">
-                                        </span>
-                                        <span class="userDetails">
-                                            <p class="itemText">
-                                                <strong id="username"></strong>
-                                            </p>
-                                            <p class="itemText userEmail" id=useremail></p>
-                                            <p class="itemText highlight">Account</p>
-                                        </span>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                        <a href="/account/orders" class="dropdown-item">
-                                            <span class="">Orders</span>
-                                        </a>
-                                        <a href="/account/reorder" class="dropdown-item">
-                                            <span class="">Reorder</span>
-                                        </a>
-                                        <a href="/account/invite" class="dropdown-item">
-                                            <span class="">Get $10 credit</span>
-                                        </a>
-                                        <a href="/logout" class="dropdown-item">
-                                            <span class="">Log out</span>
-                                        </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>-->
-                    <?php
-                        if(!isset($_SESSION['id']))
-                        {
-                        ?>
-                            <li><a class="nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/login.php">Log in</a></li>
-                            <li><a class=" nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/signup.php">Sign up</a></li>
-                        <?php
-                        }else
-                        {
-                            /*
-                            <li> <a class='nav-link text-muted pl-4' style='padding-right: 1.0rem;'>" . $_SESSION['Fullname'] . "</a> </li>
-                                      <li> <a class='nav-link pl-4' style='padding-right: 1.0rem;' href='logout.php'>Log out</a></li>" 
-                            */ 
-                                echo "<li class='nav-item dropdown'>
-                                        <div class='AccountLinks'>
-                                            <div class='wrapper' style='padding:0px;' >
-                                            <a class='nav-link dropdown-toggle toggle HeaderNavItem' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> 
-                                                <img alt='' data-testid='AccountMenuAvatar' src='". $_SESSION['image'] ."' srcset='' class='avatar small'>
-                                            </a>
-                                            <div class='dropdown-menu flyout' aria-labelledby='navbarDropdown'>
-                                                <a class='dropdown-item userItem account' href='#'>
-                                                    <span class='userAvatar'>
-                                                        <img alt='' data-testid='MenuAvatar' src='". $_SESSION['image'] ."' srcset='' class='avatarB medium'>
-                                                    </span>
-                                                    <span class='userDetails'>
-                                                        <p class='itemText'>
-                                                            <strong id='username'>". $_SESSION['name'] ."</strong>
-                                                        </p>
-                                                        <p class='itemText userEmail' id=useremail>". $_SESSION['email'] ."</p>
-                                                        <p class='itemText highlight'>Account</p>
-                                                    </span>
-                                                </a>
-                                                <div class='dropdown-divider'></div>
-                                                    <a href='/account/orders' class='dropdown-item'>
-                                                        <span class=''>Orders</span>
-                                                    </a>
-                                                    <a href='/account/reorder' class='dropdown-item'>
-                                                        <span class=''>Reorder</span>
-                                                    </a>
-                                                    <a href='/account/invite' class='dropdown-item'>
-                                                        <span class=''>Get $10 credit</span>
-                                                    </a>
-                                                    <a href='/logout' class='dropdown-item'>
-                                                        <span class=''>Log out</span>
-                                                    </a>;
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>     ";              
-                        }
-                    ?>
-                </ul>
-            </div>
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="text-muted fas fa-shopping-cart"></i>
-                </button>
-            </div>
-        </div>   
-    </nav>
+<?php include "nav.php"; 
+include "size/size.php";?>
     <main>
         <section class="paper">
             <div class="wrapper_cut bg-image-container">
@@ -497,9 +1267,9 @@ session_start();
                         <img src="/assets/cut.jpg">
                     </figure>
                     <div class="front">
-                        <div class="title_cut">
-                            <h1>Die cut stickers</h1>
-                            <span class="ratings-wrapper">
+                        <div class="title_cut"> <!-- style="width: 570px;">-->
+                            <h1>Die Cut Stickers</h1>
+                            <span style="display:none;" class="ratings-wrapper">
                                 <span class="rating-stars">
                                     <i class="fa fa-star stars_14"></i>
                                     <i class="fa fa-star stars_14"></i>
@@ -507,16 +1277,18 @@ session_start();
                                     <i class="fa fa-star stars_14"></i>
                                     <i class="fa fa-star stars_14"></i>
                                 </span>
-                                <span class="reviews-count">
+                                <span class="reviews-count" style="width: 180px;">
                                     <a href="#reviews" style="color:#2b71b8;">81,765 reviews</a>
                                 </span>
                             </span>
                         </div>
-                        <p>Custom die cut stickers are a fast and easy way to promote your business, brand or event.  Thick, durable vinyl protects your stickers from scratches, water &amp; sunlight.</p>
-                    <button class="tiny light" data-reveal-id="order-samples-modal" name="button" type="submit">Order samples</button>
+                        <p class="font-light">Custom Die Cut Stickers are a fast and easy way to promote your business, brand or event.  Thick, durable vinyl protects your stickers from scratches, water &amp; sunlight.</p>
+                        <form action="samples.php">
+                            <button class="tiny light" data-reveal-id="order-samples-modal" type="submit">Order samples</button>
+                        </form>
                     </div>
                     <div class="product">
-                        <form action="#" class="product-options">
+                        <form action="upload.php?price=57" class="product-options" method="get" id="form_id">
                             <div style="margin: 0px; padding: 0px; display: inline;">
                                 <input name="utf8" type="hidden" value="✓">
                             </div>
@@ -526,18 +1298,18 @@ session_start();
                             <input id="units_per_roll" name="units_per_roll" type="hidden" value="0">
                             <div class="product-option-group" id="variants">
                                 <legend>Select a size
-                                    <a class="action-info" data-reveal-id="size-help-modal" href="#need-help" id="size-help-open">
-                                        <i class="fa fa-info-circle-simple"></i>
-                                    </a>
+                                        <a href="#" onclick="HelpSize()">
+                                        <i  class="fas fa-info-circle"></i>
+                                        </a>
                                 </legend>
                                 <ul class="options" id="variant-options">
                                     <li>
-                                        <input id="variant_79" name="variant_id" readonly="" type="radio" value="79" checked="" onclick="CustomsizeWandH()">
-                                        <label for="variant_79"> 2" x 2"</label>
+                                        <input id="variant_78" name="variant_id" readonly="" type="radio" value="78" checked="" onclick="CustomsizeWandH()">
+                                        <label for="variant_78"> 2" x 2"</label>
                                     </li>
                                     <li>
-                                        <input id="variant_78" name="variant_id" readonly="" type="radio" value="78" onclick="CustomsizeWandH()">
-                                        <label for="variant_78"> 3" x 3"</label>
+                                        <input id="variant_79" name="variant_id" readonly="" type="radio" value="79" onclick="CustomsizeWandH()">
+                                        <label for="variant_79"> 3" x 3"</label>
                                     </li>
                                     <li>
                                         <input id="variant_80" name="variant_id" readonly="" type="radio" value="80" onclick="CustomsizeWandH()">
@@ -553,102 +1325,130 @@ session_start();
                                     </li>
                                 </ul>
                             </div>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function(event) { 
+                                    
+                                        document.getElementById('saving_1').innerText="Save " + scant100.toFixed()+"%";
+                                        document.getElementById('saving_2').innerText="Save " + scant200.toFixed()+"%";
+                                        document.getElementById('saving_3').innerText="Save " + scant300.toFixed()+"%";
+                                        document.getElementById('saving_4').innerText="Save " + scant500.toFixed()+"%";
+                                        document.getElementById('saving_5').innerText="Save " + scant1000.toFixed()+"%";
+                                        document.getElementById('saving_6').innerText="Save " + scant2000.toFixed()+"%";
+                                        document.getElementById('saving_7').innerText="Save " + scant3000.toFixed()+"%";
+                                        document.getElementById('saving_8').innerText="Save " + scant5000.toFixed()+"%";
+                                        document.getElementById('saving_9').innerText="Save " + scant10000.toFixed()+"%";
+                                        document.getElementById('variant_78').dispatchEvent(new MouseEvent("click",{bubbles: true, cancellable: true}));
+                                        document.getElementById('quantity_50').dispatchEvent(new MouseEvent("click",{bubbles: true, cancellable: true}));
+                                    });
+                            </script>
                             <div class="product-option-group" id="quantities">
                                 <legend>Select a quantity</legend>
                                 <ul class=" options radio" id="variant-quantities">
                                     <li class="checked quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_50" name="quantity" readonly="" type="radio" value="50" checked="" onclick="Custom()">
-                                            <label class="checked quantity" for="quantity_50"> 50</label>
+                                            <input id="quantity_50" name="quantity" readonly="" type="radio" value="50" onclick="Custom(54)">
+                                            <input type="radio" style="display:none;" value="54" name="price" id="price_50" checked="">
+                                            <label class="quantity" for="quantity_50"> 50</label>
                                         </span>
-                                        <span class="table-cell price" id="price_50_id">$57</span>
+                                        <span class="table-cell price" id="price_50_id" name="price" value="54">$54</span>
                                         <span class="table-cell savings"></span>
                                     </li>
+                                    
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_100" name="quantity" readonly="" type="radio" value="100" onclick="Custom()">
+                                            <input id="quantity_100" name="quantity" readonly="" type="radio" value="100" onclick="Custom(76)">
+                                            <input type="radio" style="display:none;" value="76" name="price" id="price_100" checked="">
                                             <label class=" quantity" for="quantity_100"> 100</label>
                                         </span>
-                                        <span class="table-cell price" id="price_100_id">$80</span>
-                                        <span class="table-cell savings">Save 30%</span>
+                                        <span class="table-cell price" id="price_100_id" name="price" value="76">$76</span>
+                                        <span class="table-cell savings" id="saving_1">Save 30%</span>
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_200" name="quantity" readonly="" type="radio" value="200" onclick="Custom()">
+                                            <input id="quantity_200" name="quantity" readonly="" type="radio" value="200" onclick="Custom(130)">
+                                            <input type="radio" style="display:none;" value="130" name="price" id="price_200" checked="">
                                             <label class=" quantity" for="quantity_200"> 200</label>
-                                        </span><span class="table-cell price" id="price_200_id">$137</span>
-                                        <span class="table-cell savings">Save 40%</span>
+                                        </span><span class="table-cell price" id="price_200_id" name="price" value="130">$130</span>
+                                        <span class="table-cell savings" id="saving_2">Save 40%</span>
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_300" name="quantity" readonly="" type="radio" value="300" onclick="Custom()">
+                                            <input id="quantity_300" name="quantity" readonly="" type="radio" value="300" onclick="Custom(211)">
+                                            <input type="radio" style="display:none;" value="178" name="price" id="price_300" checked="">
                                             <label class=" quantity" for="quantity_300"> 300</label>
                                         </span>
-                                        <span class="table-cell price" id="price_300_id">$222</span>
-                                        <span class="table-cell savings">Save 45%</span>
+                                        <span class="table-cell price" id="price_300_id" name="price" value="211">$211</span>
+                                        <span class="table-cell savings" id="saving_3">Save 45%</span>
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_500" name="quantity" readonly="" type="radio" value="500" onclick="Custom()">
+                                            <input id="quantity_500" name="quantity" readonly="" type="radio" value="500" onclick="Custom(270)">
+                                            <input type="radio" style="display:none;" value="270" name="price" id="price_500" checked="">
                                             <label class=" quantity" for="quantity_500"> 500</label>
                                         </span>
-                                        <span class="table-cell price" id="price_500_id">$285</span>
-                                        <span class="table-cell savings">Save 50%</span>
+                                        <span class="table-cell price" id="price_500_id" name="price" value="270">$270</span>
+                                        <span class="table-cell savings" id="saving_4">Save 50%</span>
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_1000" name="quantity" readonly="" type="radio" value="1000" onclick="Custom()">
+                                            <input id="quantity_1000" name="quantity" readonly="" type="radio" value="1000" onclick="Custom(486)">
+                                            <input type="radio" style="display:none;" value="486" name="price" id="price_1000" checked="">
                                             <label class=" quantity" for="quantity_1000"> 1,000</label>
                                         </span>
-                                        <span class="table-cell price" id="price_1000_id">$513</span>
-                                        <span class="table-cell savings">Save 55%</span>
+                                        <span class="table-cell price" id="price_1000_id" name="price" value="486">$486</span>
+                                        <span class="table-cell savings" id="saving_5">Save 55%</span>
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_2000" name="quantity" readonly="" type="radio" value="2000" onclick="Custom()">
+                                            <input id="quantity_2000" name="quantity" readonly="" type="radio" value="2000" onclick="Custom(864)">
+                                            <input type="radio" style="display:none;" value="864" name="price" id="price_2000" checked="">
                                             <label class=" quantity" for="quantity_2000"> 2,000</label>
                                         </span>
-                                        <span class="table-cell price" id="price_2000_id">$912</span>
-                                        <span class="table-cell savings">Save 60%</span>
+                                        <span class="table-cell price" id="price_2000_id" name="price" value="864">$864</span>
+                                        <span class="table-cell savings" id="saving_6">Save 60%</span>
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_3000" name="quantity" readonly="" type="radio" value="3000" onclick="Custom()">
+                                            <input id="quantity_3000" name="quantity" readonly="" type="radio" value="3000" onclick="Custom(1231)">
+                                            <input type="radio" style="display:none;" value="1231" name="price" id="price_3000" checked="">
                                             <label class=" quantity" for="quantity_3000"> 3,000</label>
                                         </span>
-                                        <span class="table-cell price" id="price_3000_id">$1300</span>
-                                        <span class="table-cell savings">Save 62%</span>
+                                        <span class="table-cell price" id="price_3000_id" name="price" value="1231">$1231</span>
+                                        <span class="table-cell savings" id="saving_7">Save 62%</span>
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_5000" name="quantity" readonly="" type="radio" value="5000" onclick="Custom()">
+                                            <input id="quantity_5000" name="quantity" readonly="" type="radio" value="5000" onclick="Custom(1728)">
+                                            <input type="radio" style="display:none;" value="1728" name="price" id="price_5000" checked="">
                                             <label class=" quantity" for="quantity_5000"> 5,000</label>
                                         </span>
-                                        <span class="table-cell price" id="price_5000_id">$1824</span>
-                                        <span class="table-cell savings">Save 68%</span>
+                                        <span class="table-cell price" id="price_5000_id" name="price" value="1728">$1728</span>
+                                        <span class="table-cell savings" id="saving_8">Save 68%</span>
                                     </li>
                                     <li class=" quantity-item">
                                         <span class="table-cell">
-                                            <input id="quantity_10000" name="quantity" readonly="" type="radio" value="10000" onclick="Custom()">
+                                            <input id="quantity_10000" name="quantity" readonly="" type="radio" value="10000" onclick="Custom(3240)">
+                                            <input type="radio" style="display:none;" value="3240" name="price" id="price_10000" checked="">
                                             <label class=" quantity" for="quantity_10000"> 10,000</label>
                                         </span>
-                                        <span class="table-cell price" id="price_10000_id">$3420</span>
-                                        <span class="table-cell savings">Save 70%</span>
+                                        <span class="table-cell price" id="price_10000_id" name="price" value="3240">$3240</span>
+                                        <span class="table-cell savings" id="saving_9">Save 70%</span>
                                     </li>
                                     <li class="quantity-item" >
                                         <span class="table-cell">
-                                            <input id="quantity_custom" name="quantity" readonly="" type="radio" value="" onclick="Custom()">
+                                            <input id="quantity_custom" name="quantity" readonly="" type="radio" value="" onclick="Custom(0)">
+                                            <input type="radio" style="display:none;" value="" name="price" id="price_custom" checked="">
                                             <label class=" quantity" id="custom">
                                                 <span class="custom-quantity-wrapper" id="spancustom">Custom quantity</span>
                                             </label>
                                         </span>
-                                        <span class="table-cell" id="spancustomprice"></span>
-                                        <span class="table-cell" id="spancustomsavings"></span>
+                                        <span class="table-cell" id="spancustomprice" name="spancustomprice"></span>
+                                        <span class="table-cell savings" id="spancustomsavings"></span>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="continue">
-                                <button class="button large primary block" id="continue">Continue</button>
+                            <div class="continue" id="continue">
+                                <button class="button large secondary block" name="filename" value="Die cut stickers">Continue</button>
                                 <p>Next: upload artwork →</p>
                             </div>
                         </form>
@@ -659,37 +1459,37 @@ session_start();
         <section class="products" style="background-color: #ffffff;">
             <div class="container">
                 <div class="wrapper">
-                    <div class="grid3">
-                        <div class="wrapperproducts text-dark">
+                    <div class="grid3 grid_product">
+                        <div class="wrapperproducts_sin text-dark" style="padding: 10px 0 10px 0;">
                             <div class="image_car">
-                                <img src="/assets/4.svg" srcset="" height="80">
+                                <img src="/assets/4.png" srcset="" height="80">
                             </div>
-                                <h3>Free shipping in 4 days</h3>
-                                <p style="text-align: center;">Get your die cut stickers fast with 4 day turnaround and free shipping.</p>
-                                <a href="#">Get a delivery estimate</a>
+                                <h3 style="text-align: center;">Shipping in 4 days</h3>
+                                <p style="text-align: center;">Get your die cut stickers fast with 4 day turnaround.</p>
+                                <!--<a style="text-align: center;" href="#">Get a delivery estimate</a>-->
                         </div>
-                        <div class="wrapperproducts text-dark">
+                        <div class="wrapperproducts_sin text-dark" style="padding: 10px 0 10px 0;">
                             <div class="image_car">
-                                <img src="/assets/online.svg" srcset="" height="80">
+                                <img src="/assets/online.png" srcset="" height="80">
                             </div>
-                                <h3>Get an online proof</h3>
+                                <h3 style="text-align: center;">Get an online proof</h3>
                                 <p style="text-align: center;">Review your proof shortly after checkout and request changes until you're happy.</p>
-                                <a href="#">Watch our process</a>
+                                <!--<a style="text-align: center;" href="#">Watch our process</a>-->
                         </div>
-                        <div class="wrapperproducts text-dark">
+                        <div class="wrapperproducts_sin text-dark" style="padding: 10px 0 10px 0;">
                             <div class="image_car">
-                                <img src="/assets/clima.svg" srcset="" height="80">
+                                <img src="/assets/clima.png" srcset="" height="80">
                             </div>
-                                <h3>Durable & weatherproof</h3>
+                                <h3 style="text-align: center;">Durable & weatherproof</h3>
                                 <p style="text-align: center;">Thick, durable vinyl protects your die cut stickers from scratching, rain & sunlight.</p>
-                                <a href="#">See how durable</a>
+                                <!--<a  style="text-align: center;"href="#">See how durable</a>-->
                         </div>
                         
                     </div>
                 </div>
             </div>
         </section>
-        <section class="container_video">
+        <section class="container_video" style="display: none;">
             <div class="container">
                 <div class="videosize">
                     <div class="embed-responsive embed-responsive-16by9">
@@ -699,7 +1499,7 @@ session_start();
                 </div>
            <div class="contentVideo">
                <h2 class="videoTitle">Free shipping, free online proofs, fast turnaround.</h2>
-               <p class="VideoText">Sticker Mule is the fastest and easiest way to buy custom 
+               <p class="VideoText">Acme Stickers is the fastest and easiest way to buy custom 
                     printed products. Order in 60 seconds and we'll turn your designs and illustrations into custom stickers, 
                     magnets, buttons, labels and packaging in days. We offer free online proofs, free worldwide shipping and super fast turnaround.
                 </p>
@@ -707,53 +1507,7 @@ session_start();
             </div>
         </section>
     </main>
-    <footer class="Footer">
-        <div class="container">
-            <div class="links">
-                <nav>
-                    <span>
-                        <a class="link" href="/uses">Uses</a>
-                    </span>
-                    <span>
-                        <a class="link" href="/templates">Templates</a>
-                    </span>
-                    <span>
-                        <a class="link" href="/support">Help</a>
-                    </span>
-                </nav>
-            </div>
-            <div class="interactive">
-                <div>
-                    <a aria-label="Instagram" href="#" rel="noopener noreferrer" target="_blank">
-                        <svg fill="currentColor" height="20" viewBox="0 0 857.1 1000" width="20">
-                            <path d="M571 500q0-59-41-101t-101-42-101 42-42 101 42 101 101 42 101-42 41-101zm77 0q0 91-64 156t-155 64-156-64-64-156 64-156 156-64 155 64 64 156zm61-229q0 21-15 36t-37 15-36-15-15-36 15-36 36-15 37 15 15 36zM429 148H327q-20 0-54 2t-57 5-40 11q-28 11-49 32t-33 49q-6 16-10 40t-6 58-1 53 0 59 0 43 0 43 0 59 1 53 6 58 10 40q12 28 33 49t49 32q16 6 40 11t57 5 54 2 59 0 43 0 42 0 59 0 54-2 58-5 39-11q28-11 50-32t32-49q6-16 10-40t6-58 1-53 0-59 0-43 0-43 0-59-1-53-6-58-10-40q-11-28-32-49t-50-32q-16-6-39-11t-58-5-54-2-59 0-42 0zm428 352q0 128-3 177-5 116-69 180t-179 69q-50 3-177 3t-177-3q-116-6-180-69T3 677q-3-49-3-177t3-177q5-116 69-180t180-69q49-3 177-3t177 3q116 6 179 69t69 180q3 49 3 177z"></path>
-                        </svg>
-                    </a>
-                    <a aria-label="Facebook" href="#" rel="noopener noreferrer" target="_blank">
-                        <svg fill="currentColor" height="20" viewBox="0 0 571.4 1000" width="20">
-                            <path d="M535 7v147h-87q-48 0-65 20t-17 60v106h164l-22 165H366v424H195V505H53V340h142V218q0-104 58-161T408 0q82 0 127 7z"></path>
-                        </svg>
-                    </a>
-                    <a aria-label="Youtube" href="#" rel="noopener noreferrer" target="_blank">
-                        <svg fill="currentColor" height="20" viewBox="0 0 1000 1000" width="20">
-                            <path d="M397 629l270-139-270-141v280zm103-481q94 0 181 3t128 5l41 2 9 1q9 1 13 2t13 2 16 5 16 7 17 11 16 15q4 3 9 10t16 33 15 56q4 36 7 76t3 64v98q1 81-10 162-4 30-14 55t-18 35l-8 9q-7 8-16 15t-17 10-16 7-16 5-13 2-13 2-9 1q-140 11-350 11-115-2-201-4t-111-4l-28-3-20-2q-20-3-30-5t-29-12-31-23q-4-3-9-10t-16-33-15-56q-4-36-7-76t-3-64v-98q-1-81 10-162 4-31 14-55t18-35l8-9q8-9 16-15t17-11 16-7 16-5 13-2 13-2 9-1q140-10 350-10z"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="legal">
-                <div class="footer-legal">
-                    <small class="jsx-4078830720">© 2020<!-- --> <!-- -->AcmeStickers</small>
-                    <a class="link" href="/legal/privacy">Privacy</a>
-                    &nbsp;&amp;&nbsp;
-                    <a class="link" href="/legal/terms">Terms</a>
-                    <span class="siteMapFooter">
-                        <a class="link" href="/sitemap">Site map</a>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </footer>
+<?php include "footer.php"; ?>
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

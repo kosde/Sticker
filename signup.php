@@ -1,17 +1,18 @@
 <?php
 session_start();
+$datezone=date_default_timezone_get();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sticker Mule | Custom stickers that kick ass</title> 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <?php
+     include "css.php";
+    ?>
     <script src="https://kit.fontawesome.com/a38c16a07e.js"></script>
-    <meta name="google-signin-client_id" content="616721949868-7bm0boihng0p9cstchmk00s7u85uuqvm.apps.googleusercontent.com">
+    <meta name="google-signin-client_id" content="524978229044-o5t0u32i8442mg7du6c3p976h33mu9mk.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <script src="https://apis.google.com/js/api:client.js"></script>
@@ -20,45 +21,38 @@ session_start();
         var startApp = function() {
             gapi.load('auth2', function(){
                 auth2 = gapi.auth2.init({
-                client_id: '616721949868-7bm0boihng0p9cstchmk00s7u85uuqvm.apps.googleusercontent.com',
+                client_id: '524978229044-o5t0u32i8442mg7du6c3p976h33mu9mk.apps.googleusercontent.com',
                 cookiepolicy: 'single_host_origin',
             });
-            auth2.attachClickHandler('signin-button', {}, onSuccess, onFailure);
+            auth2.attachClickHandler('gSignInWrapper', {}, onSuccess, onFailure);
 
             attachSignin(document.getElementById('customBtn'));
             });
         };
         function attachSignin(element) {
+            //alert("si");
             console.log(element.id);
                 auth2.attachClickHandler(element, {},
                 onSuccess, onFailure);
         }
         function setCookie(key, value) {
             var expires = new Date();
-            expires.setTime(expires.getTime() + (60 * 1000));
+            expires.setTime(expires.getTime() + (6000));
             document.cookie = key + '=' + value + ';expires=' + expires.toUTCString();
         }
         var onSuccess = function(user) {
-            var myvar = user.getBasicProfile().getName();
-            setCookie('cookie_session', myvar);
-            //$_SESSION['Fullname'] = user.getBasicProfile().getName();
-            //$_SESSION['ImageURL']= user.getBasicProfile().getImageUrl();
-            //$_SESSION['Email'] = user.getBasicProfile().getEmail();
-            console.log('Signed in as ' + user.getBasicProfile().getEmail());    
-            console.log('Signed in as ' + user.getBasicProfile().getName());
+            //alert("si");
+            setCookie('name', user.getBasicProfile().getName());
+            setCookie('avatar', user.getBasicProfile().getImageUrl());
+            setCookie('email', user.getBasicProfile().getEmail());
+            setCookie('id', user.getBasicProfile().getId());
+            location.reload();
             };
         var onFailure = function(error) {
             console.log(error);
         };
     </script>
-    <?php
-        if(isset($_COOKIE['cookie_session'])):
-            $_SESSION['Fullname'] =  $_COOKIE['cookie_session'];
-            setcookie("cookie_session", '');
-            header("Location:index.php");
-            endif;
-        
-    ?>
+    
     <style type="text/css">
         #customBtn {
         display: inline-block;
@@ -99,97 +93,129 @@ session_start();
     </style>
 
 </head>
-<body style="background-color: #f97805;">
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">      
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="text-muted fa fa-bars"></i>
-                </button>
-            </div>
-            <a href="index.php" class="navbar-brand d-flex" style="padding-top: 5px;">
-                <img src="/assets/Logo_2.png" width="30" height="25">
-                <h4 style="color: #582707;" class="dt">Acme</h4>
-                <h4 style="color: #f26922;" class="dt">Stickers</h4>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link"style="color: #582707;" href="custom-stickers.php">Stickers</a></li> 
-                </ul>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex:0.5;">
-                <ul class="navbar-nav mr-auto">
-                    <li><a href="/cart.php"><i  class="nav-link fas fa-shopping-cart" style="color: #582707;"></i></a></li>
-                    <?php
-                        if(!isset($_SESSION['id']))
-                        {
-                        ?>
-                            <li><a class="nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/login.php">Log in</a></li>
-                            <li><a class=" nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/signup.php">Sign up</a></li>
-                        <?php
-                        }else
-                        {
-                                echo "<li class='nav-item dropdown'>
-                                        <div class='AccountLinks'>
-                                            <div class='wrapper' style='padding:0px;' >
-                                            <a class='nav-link dropdown-toggle toggle HeaderNavItem' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> 
-                                                <img alt='' data-testid='AccountMenuAvatar' src='". $_SESSION['image'] ."' srcset='' class='avatar small'>
-                                            </a>
-                                            <div class='dropdown-menu flyout' aria-labelledby='navbarDropdown'>
-                                                <a class='dropdown-item userItem account' href='#'>
-                                                    <span class='userAvatar'>
-                                                        <img alt='' data-testid='MenuAvatar' src='". $_SESSION['image'] ."' srcset='' class='avatarB medium'>
-                                                    </span>
-                                                    <span class='userDetails'>
-                                                        <p class='itemText'>
-                                                            <strong id='username'>". $_SESSION['name'] ."</strong>
-                                                        </p>
-                                                        <p class='itemText userEmail' id=useremail>". $_SESSION['email'] ."</p>
-                                                        <p class='itemText highlight'>Account</p>
-                                                    </span>
-                                                </a>
-                                                <div class='dropdown-divider'></div>
-                                                    <a href='/account/orders' class='dropdown-item'>
-                                                        <span class=''>Orders</span>
-                                                    </a>
-                                                    <a href='/account/reorder' class='dropdown-item'>
-                                                        <span class=''>Reorder</span>
-                                                    </a>
-                                                    <a href='/account/invite' class='dropdown-item'>
-                                                        <span class=''>Get $10 credit</span>
-                                                    </a>
-                                                    <a href='/logout' class='dropdown-item'>
-                                                        <span class=''>Log out</span>
-                                                    </a>;
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>     ";              
-                        }
-                    ?>
-                </ul>
-            </div>
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="text-muted fas fa-shopping-cart"></i>
-                </button>
-            </div>
-        </div>   
-    </nav>
+<body style="background-color: #102542;">
+<?php include "nav.php"; ?>
+<?php
+        if(isset($_COOKIE['id'])){
+            /*$_SESSION['id'] =  $_COOKIE['id'];
+            $_SESSION['name'] =  $_COOKIE['name'];
+            $_SESSION['avatar'] =  $_COOKIE['avatar'];
+            $_SESSION['email'] =  $_COOKIE['email'];*/
+            include 'php/conexion_be.php';
+            $nombre_u = $_COOKIE['name'];
+            $email_u  = $_COOKIE['email'];
+            $imagen_u   = $_COOKIE['avatar'];
+            $date = date('Y-m-d H:i');
+            $hash_email = hash('sha512',$email_u);
+            $date_hash =  hash('sha512',$date);
+            //$query = "INSERT INTO users (usrname,email,avatar,hash_email,date_create) VALUES ('$nombre_u','$email_u','$imagen_u','$hash_email','$date')";
+            $verificar = mysqli_query($conexion, "SELECT * FROM users WHERE email='$email_u'");
+            //$id_last = mysqli_insert_id ($conexion);
+            if(mysqli_num_rows($verificar)>0)
+            {
+                //$query = "INSERT INTO notifications (id_user)VALUES('$id_last')";
+                //$verificar = mysqli_query($conexion,$query);
+                $_SESSION["error"] = 6;
+                mysqli_close($conexion);
+                echo'
+                    <script>
+                        window.location = "../login.php";
+                    </script>
+                    ';
+                
+            }
+            
+            
+            $query = "INSERT INTO users (usrname,email,avatar,hash_email,date_create,date_token,token) VALUES ('$nombre_u','$email_u','$imagen_u','$hash_email','$date','$date','$date_hash')";
+            $ejecutar = mysqli_query($conexion,$query);
+            $id_last = mysqli_insert_id ($conexion);
+            if($ejecutar)
+            {
+                $query = "INSERT INTO notifications (id_user)VALUES('$id_last')";
+                $verificar = mysqli_query($conexion,$query);
+                $from = "info@acmestickers.com";
+                $to = $email_u;
+                $linkverifica = "https://www.acmestickers.com/confirm_account.php?email=".$hash_email."&token=".$date_hash;
+                $subject = "Confirm your email address";
+                $message = "Hi ". $nombre_u .",<br>
+                            <br>
+                            To complete the signup process, confirm your email address by clicking the link below:<br>
+
+                            <a href='". $linkverifica ."'>Confirm your email address</a><br>
+                            <br>
+                            <br>
+                            <br>
+                            Thanks,<br>
+                            <br>
+                            Acme Sticker";
+                require('php/phpmailer/class.phpmailer.php');
+
+                $mail = new PHPMailer();
+                $mail->IsSMTP();
+                $mail->SMTPDebug = 1;
+                $mail->Debugoutput = 'html';
+                $mail->SMTPAuth = TRUE;
+                $mail->SMTPSecure = "ssl";
+                $mail->Port     = 465;  
+                $mail->Username = "info@acmestickers.com";
+                $mail->Password = "H5s8v7SeftZkK9J";
+                $mail->Host     = "acmestickers.com";
+                $mail->Mailer   = "smtp";
+                $mail->SetFrom("info@acmestickers.com","Acme Stickers");
+                $mail->AddAddress($to);	
+                $mail->Subject = $subject;
+                $mail->Body    = $message;
+                $mail->WordWrap   = 80;
+                $mail->IsHTML(true);
+                if(!$mail->Send())
+                {
+                    $msg = "<p class='error'>Problem in Sending Mail.</p>";
+                }
+                else 
+                {
+                    $msg = "<p class='success'>Mail Sent Successfully.</p>";
+                }
+                session_destroy();
+                echo'
+                <script>
+                    window.location = "../confirm_your_account.php";
+                </script>
+                ';
+            }
+            
+            
+            
+        }
+        
+    ?>
     <div class="main">
         <div class="login-form">
             <form action="php/registro_usr_be.php" method="post">	
+                <?php
+                 if(isset($_SESSION['error']))
+                 {
+                    if($_SESSION['error']==1)
+                    {
+                    echo "<div class='error_account'>
+                    This account already exists. Please use another email address or <a href='login.php'>log in</a>.
+                    </div>";
+                    }
+                    unset($_SESSION['error']);
+                }
+                ?>
                 <div class="text-center social-btn">
                     <div id="gSignInWrapper">
                         <div id="customBtn" class="customGPlusSignIn">
                         
-                        <span class="icon"><svg height="20" class="icongoogle" version="1" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M18.9 10c0-.7-.1-1.3-.2-1.9h-8.6v3.6H15c-.2 1.1-.8 2.1-1.8 2.8v2.3h3c1.7-1.6 2.7-4 2.7-6.8z" fill="#547DBE"></path>
-                        <path d="M10.1 19c2.5 0 4.6-.8 6.1-2.2l-3-2.3c-.8.6-1.9.9-3.1.9-2.4 0-4.5-1.7-5.2-3.9l-3 .1V14c1.5 2.9 4.6 5 8.2 5z" fill="#34A751"></path>
-                        <path d="M4.9 11.5c-.1-.5-.2-1.1-.2-1.7s.1-1.2.2-1.7V5.7l-3 .1c-.6 1.2-1 2.5-1 4s.4 3 1 4.2l3-2.5z" fill="#F8BB15"></path>
-                        <path d="M10.1 4.3c1.3 0 2.6.5 3.5 1.4l2.6-2.6C14.6 1.6 12.5.7 10.1.7 6.5.7 3.4 2.8 1.9 5.8l3 2.3c.8-2.2 2.8-3.8 5.2-3.8z" fill="#E94435"></path>
-                        </svg></span>
-                        <span class="buttonText">Sign in with Google</span>
+                        <span class="icon">
+                            <svg height="20" class="icongoogle" version="1" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.9 10c0-.7-.1-1.3-.2-1.9h-8.6v3.6H15c-.2 1.1-.8 2.1-1.8 2.8v2.3h3c1.7-1.6 2.7-4 2.7-6.8z" fill="#547DBE"></path>
+                                <path d="M10.1 19c2.5 0 4.6-.8 6.1-2.2l-3-2.3c-.8.6-1.9.9-3.1.9-2.4 0-4.5-1.7-5.2-3.9l-3 .1V14c1.5 2.9 4.6 5 8.2 5z" fill="#34A751"></path>
+                                <path d="M4.9 11.5c-.1-.5-.2-1.1-.2-1.7s.1-1.2.2-1.7V5.7l-3 .1c-.6 1.2-1 2.5-1 4s.4 3 1 4.2l3-2.5z" fill="#F8BB15"></path>
+                                <path d="M10.1 4.3c1.3 0 2.6.5 3.5 1.4l2.6-2.6C14.6 1.6 12.5.7 10.1.7 6.5.7 3.4 2.8 1.9 5.8l3 2.3c.8-2.2 2.8-3.8 5.2-3.8z" fill="#E94435"></path>
+                            </svg>
+                        </span>
+                        <span class="buttonText" style="padding-left: 25% !important;">Sign in with Google</span>
                         </div>
                     </div>
                     <div id="name"></div>
@@ -198,34 +224,33 @@ session_start();
                 <div class="or-seperator"><i>or</i></div>
                 <div class="form-group">
                     <label class="float-left form-check-label">Name</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Name" required="required">
+                    <div class="input-group" style="padding: 10px 0 10px 0;">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="Name" required="required" autofocus>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="float-left form-check-label">Email</label>
-                    <div class="input-group">
+                    <div class="input-group" style="padding: 10px 0 10px 0;">
                         <input type="email" class="form-control" name="email"  id="email" placeholder="Email" required="required">
                     </div>
                 </div>    
                 <div class="form-group">
                     <label class="float-left form-check-label">Password</label>
-                    <div class="input-group">
+                    <div class="input-group" style="padding: 10px 0 10px 0;">
                         
                         <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="required">
                     </div>
                 </div>        
                 <div class="form-group">
-                    <button type="submit" class="btn btn-success btn-block login-btn">Sign up</button>
+                    <button style="width: 100%;"type="submit" class="button secondary large pr-4">Sign up</button>
                 </div>
                 <div class="text-center">
                     <label class="">Or </label>
-                    <a href="#" class="text-success">log in</a>
+                    <a href="login.php" class="text-success">log in</a>
                 </div>  
             </form>
         </div>
     </div>
-   
     <script src="js/jquery-3.5.1.slim.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

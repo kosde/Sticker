@@ -1,287 +1,227 @@
 <?php
 session_start();
+if(!isset($_SESSION['Leng']))
+{
+$_SESSION['Leng']="<i class='flagstrap-icon flagstrap-us' style='margin-right: 10px;'></i> English";
+$_SESSION['LengCod']="EN";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta content="text/html, charset=utf-8" http-equiv="Content-Type">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acme Sticker | Custom stickers that kick ass</title> 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    
+    <?php
+     include "css.php";
+    ?>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE9CHPEGEP"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KE9CHPEGEP');
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a38c16a07e.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-199557863-1"></script> 
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+    <style>
+        .active
+        {
+            border-bottom:0px;
+            border-bottom-color: transparent;
+            padding:0px;
+            transition: none;
+            display: inline-block;
+            background-color: transparent;
+            margin-right: 0px;
+        }
+        .sizeimg{
+            width: auto !important;
+            height: 100%;
+            margin: auto;
+        }
+        .carousel-item{
+            width: 100%;
+            height: 290px; 
+        }
+        .carousel{position:relative}
+        .carousel-inner{position:relative;width:100%;overflow:hidden}
+        .carousel-item{position:relative;display:none;-ms-flex-align:center;align-items:center;width:100%;-webkit-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000px;perspective:1000px}
+        .carousel-item-next,.carousel-item-prev,.carousel-item.active{display:block;transition:-webkit-transform .6s ease;transition:transform .6s ease;transition:transform .6s ease,-webkit-transform .6s ease}
+        @media screen and (prefers-reduced-motion:reduce){.carousel-item-next,.carousel-item-prev,.carousel-item.active{transition:none}
+        }
+        .carousel-item-next,.carousel-item-prev{position:absolute;top:0}
+        .carousel-item-next.carousel-item-left,.carousel-item-prev.carousel-item-right{-webkit-transform:translateX(0);transform:translateX(0)}
+        @supports ((-webkit-transform-style:preserve-3d) or (transform-style:preserve-3d)){.carousel-item-next.carousel-item-left,.carousel-item-prev.carousel-item-right{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
+        }
+        .active.carousel-item-right,.carousel-item-next{-webkit-transform:translateX(100%);transform:translateX(100%)}
+        @supports ((-webkit-transform-style:preserve-3d) or (transform-style:preserve-3d)){.active.carousel-item-right,.carousel-item-next{-webkit-transform:translate3d(100%,0,0);transform:translate3d(100%,0,0)}
+        }
+        .active.carousel-item-left,.carousel-item-prev{-webkit-transform:translateX(-100%);transform:translateX(-100%)}
+        @supports ((-webkit-transform-style:preserve-3d) or (transform-style:preserve-3d)){.active.carousel-item-left,.carousel-item-prev{-webkit-transform:translate3d(-100%,0,0);transform:translate3d(-100%,0,0)}
+        }
+        .carousel-fade .carousel-item{opacity:0;transition-duration:.6s;transition-property:opacity}
+        .carousel-fade .carousel-item-next.carousel-item-left,.carousel-fade .carousel-item-prev.carousel-item-right,.carousel-fade .carousel-item.active{opacity:1}
+        .carousel-fade .active.carousel-item-left,.carousel-fade .active.carousel-item-right{opacity:0}
+        .carousel-fade .active.carousel-item-left,.carousel-fade .active.carousel-item-prev,.carousel-fade .carousel-item-next,.carousel-fade .carousel-item-prev,.carousel-fade .carousel-item.active{-webkit-transform:translateX(0);transform:translateX(0)}
+        @supports ((-webkit-transform-style:preserve-3d) or (transform-style:preserve-3d)){.carousel-fade .active.carousel-item-left,.carousel-fade .active.carousel-item-prev,.carousel-fade .carousel-item-next,.carousel-fade .carousel-item-prev,.carousel-fade .carousel-item.active{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
+        }
+        .carousel-control-next,.carousel-control-prev{position:absolute;top:0;bottom:0;display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:15%;color:#fff;text-align:center;opacity:.5}
+        .carousel-control-next:focus,.carousel-control-next:hover,.carousel-control-prev:focus,.carousel-control-prev:hover{color:#fff;text-decoration:none;outline:0;opacity:.9}
+        .carousel-control-prev{left:0}
+        .carousel-control-next{right:0}
+        .carousel-control-next-icon,.carousel-control-prev-icon{display:inline-block;width:20px;height:20px;background:transparent no-repeat center center;background-size:100% 100%}
+        .carousel-control-prev-icon{background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E")}
+        .carousel-control-next-icon{background-image:url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E")}
+        .carousel-indicators{position:absolute;right:0;bottom:10px;left:0;z-index:15;display:-ms-flexbox;display:flex;-ms-flex-pack:center;justify-content:center;padding-left:0;margin-right:15%;margin-left:15%;list-style:none}
+        .carousel-indicators li{position:relative;-ms-flex:0 1 auto;flex:0 1 auto;width:30px;height:3px;margin-right:3px;margin-left:3px;text-indent:-999px;cursor:pointer;background-color:rgba(255,255,255,.5)}
+        .carousel-indicators li::before{position:absolute;top:-10px;left:0;display:inline-block;width:100%;height:10px;content:""}
+        .carousel-indicators li::after{position:absolute;bottom:-10px;left:0;display:inline-block;width:100%;height:10px;content:""}
+        .carousel-indicators .active{background-color:#fff}
+        .carousel-caption{position:absolute;right:15%;bottom:20px;left:15%;z-index:10;padding-top:20px;padding-bottom:20px;color:#fff;text-align:center}
+        @media (max-width:790px)
+        {
+            .layersimg
+            {
+            padding: 0px !important;
+            }
+            
+        }
+        @media (max-width:600px)
+        {
+            .col-sm-4{
+            padding: 30px 0px;
+            }
+        }
+        .col-xl-12{
+            padding: 0px 0px 50px 0px;
+        }   
+        .layers{
+            width: 100% !important;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container">      
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="text-muted fa fa-bars"></i>
-                </button>
-            </div>
-            <a href="index.php" class="navbar-brand d-flex" style="padding-top: 5px;">
-                <img src="/assets/Logo_2.png" width="30" height="25">
-                <h4 style="color: #582707;" class="dt">Acme</h4>
-                <h4 style="color: #f26922;" class="dt">Stickers</h4>
-            </a>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li><a class="nav-link"style="color: #582707;" href="custom-stickers.php">Stickers</a></li> 
-                </ul>
-            </div>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent" style="flex:0.5;">
-                <ul class="navbar-nav mr-auto">
-                    <li><a href="/cart.php"><i  class="nav-link fas fa-shopping-cart" style="color: #582707;"></i></a></li>
-                    <!--<li class="nav-item dropdown">
-                        <div class="AccountLinks">
-                            <div class="wrapper">
-                            <a class="nav-link dropdown-toggle toggle HeaderNavItem" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
-                                <img alt="" data-testid="AccountMenuAvatar" src="" srcset="" class="avatar small">
-                            </a>
-                            <div class="dropdown-menu flyout" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item userItem account" href="#">
-                                        <span class="userAvatar">
-                                            <img alt="" data-testid="MenuAvatar" src="" srcset="" class="avatarB medium">
-                                        </span>
-                                        <span class="userDetails">
-                                            <p class="itemText">
-                                                <strong id="username"></strong>
-                                            </p>
-                                            <p class="itemText userEmail" id=useremail></p>
-                                            <p class="itemText highlight">Account</p>
-                                        </span>
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                        <a href="/account/orders" class="dropdown-item">
-                                            <span class="">Orders</span>
-                                        </a>
-                                        <a href="/account/reorder" class="dropdown-item">
-                                            <span class="">Reorder</span>
-                                        </a>
-                                        <a href="/account/invite" class="dropdown-item">
-                                            <span class="">Get $10 credit</span>
-                                        </a>
-                                        <a href="/logout" class="dropdown-item">
-                                            <span class="">Log out</span>
-                                        </a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>-->
-                    <?php
-                        if(!isset($_SESSION['id']))
-                        {
-                        ?>
-                            <li><a class="nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/login.php">Log in</a></li>
-                            <li><a class=" nav-link  pl-4" style="padding-right: 1.0rem; color: #582707;" href="/signup.php">Sign up</a></li>
-                        <?php
-                        }else
-                        {
-                            /*
-                            <li> <a class='nav-link text-muted pl-4' style='padding-right: 1.0rem;'>" . $_SESSION['Fullname'] . "</a> </li>
-                                      <li> <a class='nav-link pl-4' style='padding-right: 1.0rem;' href='logout.php'>Log out</a></li>" 
-                            */ 
-                                echo "<li class='nav-item dropdown'>
-                                        <div class='AccountLinks'>
-                                            <div class='wrapper' style='padding:0px;' >
-                                            <a class='nav-link dropdown-toggle toggle HeaderNavItem' href='#' id='navbarDropdown' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'> 
-                                                <img alt='' data-testid='AccountMenuAvatar' src='". $_SESSION['image'] ."' srcset='' class='avatar small'>
-                                            </a>
-                                            <div class='dropdown-menu flyout' aria-labelledby='navbarDropdown'>
-                                                <a class='dropdown-item userItem account' href='#'>
-                                                    <span class='userAvatar'>
-                                                        <img alt='' data-testid='MenuAvatar' src='". $_SESSION['image'] ."' srcset='' class='avatarB medium'>
-                                                    </span>
-                                                    <span class='userDetails'>
-                                                        <p class='itemText'>
-                                                            <strong id='username'>". $_SESSION['name'] ."</strong>
-                                                        </p>
-                                                        <p class='itemText userEmail' id=useremail>". $_SESSION['email'] ."</p>
-                                                        <p class='itemText highlight'>Account</p>
-                                                    </span>
-                                                </a>
-                                                <div class='dropdown-divider'></div>
-                                                    <a href='/account/orders' class='dropdown-item'>
-                                                        <span class=''>Orders</span>
-                                                    </a>
-                                                    <a href='/account/reorder' class='dropdown-item'>
-                                                        <span class=''>Reorder</span>
-                                                    </a>
-                                                    <a href='/account/invite' class='dropdown-item'>
-                                                        <span class=''>Get $10 credit</span>
-                                                    </a>
-                                                    <a href='/logout' class='dropdown-item'>
-                                                        <span class=''>Log out</span>
-                                                    </a>;
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>     ";              
-                        }
-                    ?>
-                </ul>
-            </div>
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="text-muted fas fa-shopping-cart"></i>
-                </button>
-            </div>
-        </div>   
-    </nav>
+<?php include "nav.php"; ?>  
     <main>
-        <section class="first">
-            <div class="mainimage container">
-                <div class="wrapper">
+        <section class="first image_index" style="background-image: url('/assets/mainimage.webp');background-size: 500px;background-repeat: no-repeat;">
+            <div class="container move" style="display:table">
+                <div style="display: table-cell;vertical-align: middle;">
                     <div class="slogan">
-                        <h1 class="slogantxt">Custom Stickers Delivered to your Doorsteps</h1>
+                        <h1 class="slogantxt" translate="yes">CUSTOM STICKERS DELIVERED TO YOUR DOOR</h1>
                     </div>
                     <div class="sub">
-                        <p class="regular2">Easy online ordering, 4 day turnaround and free online proofs. Free shipping.</p>
+                        <p class="regular2 font-light" translate="yes">EASY ONLINE ORDERING, 4 DAY TURNAROUND AND FREE ONLINE PROOFS. FREE SHIPPING.</p>
                     </div>
                     <div class="buttons-2 buttons">
-                        <a class="button secondary large" href="custom-stickers.php"><div class="content">Order now</div></a>
-                        <a class="button primary large pr-4" href="samples.php"><div class="content">Samples</div></a>
+                        <a class="button secondary large" href="custom-stickers.php" style="margin-bottom: 10px;"><div class="content">Order now</div></a>
+                        <a class="button primary large pr-4" href="samples.php" style="margin-bottom: 10px;"><div class="content">Samples</div></a>
                     </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="container_video" style="height: 100% !important;">
+            <div class="container" onscroll="myFunction()">
+                <div class="videosize" id="instagram" style="height: 100% !important;">
+                    
+                    <div  class="elfsight-app-638b5be0-4cf0-4f0a-a8aa-92b0af06a19a" style="width: 345px;margin: auto;height: 300px !important;"></div>
+
                 </div>
                 
+                <style>
+                    .eapps-link{
+                        visibility: hidden !important;
+                    }
+                </style>
+                <div class="contentVideo">
+                    <strong class="videoTitle" style="text-align: left;color:#f86624;">ACME STICKERS OFFERS... <br>• FREE ONLINE PROOFS. <br>• FREE SHIPPING.<br>• FAST TURNAROUND.</strong>
+                    <p class="VideoText font-light" style="font-size: .9rem;padding-top: 20px;" >ACME STICKERS is the fastest and easiest way to buy custom printed products. 
+                        Order in seconds and we'll turn your designs and illustrations into custom stickers in days. 
+                        We offer free online proofs and super fast turnaround.
+                    </p>
+                </div>
             </div>
         </section>
-        <section class="products">
-            <div class="container">
-                <div class="wrapper">
-                    <div class="grid3">
-                        <div class="wrapperproducts">
-                            <a href="/custom-stickers.php">
-                            <div class="image">
-                                <img src="/assets/Die cut stickers.png" srcset="" width="200">
+        <section class="container_made" style="height: 100% !important;">
+            <div class="container" style="padding-top: 100px;">
+            <h2 class="videoTitle" style="text-align: center;color:#f86624;padding-bottom: 100px;">WHAT OUR STICKERS ARE MADE OFF</h2>
+                <div class="col-xl-12 col-sm-12 row" style="margin: auto;">
+                    <div class="col-xl-7 col-sm-12" style="padding: 0;">
+                        <img src="assets/made/layers.webp" alt="layers" class="layers" >
+                    </div>
+                    <div class="col-xl-5 col-sm-12">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-4 col-sm-4 " style="text-align: center;margin: auto;">
+                                <img src="assets/made/laminata.webp" alt="laminata"  style="width: 100%;" class="layersimg layers">
                             </div>
-                                <p class="regular">DIE CUT STICKERS</p>
-                            </a>
-                        </div>
-                        <div class="wrapperproducts">
-                            <a href="/custom-stickers.php">
-                            <div class="image">
-                                <img src="/assets/Circle stickers.png" srcset="" width="200">
+                            <div class="col-xl-9" style="margin:auto;">
+                                <h6 style="text-align: left;color:#f86624;">DOUBLE LAYER  LAMINATE</h6>
+                                
+                                <p class="VideoText font-light" style="font-size: .9rem;">Every sticker we produce comes with two layers of  matte UV protectant laminate. This  laminates protect your stickers against fading, cracking or peeling. This layers are also scratch resistant.</p>
                             </div>
-                                <p class="regular">CIRCLE STICKERS</p>
-                            </a>
                         </div>
-                        <div class="wrapperproducts">
-                            <a href="/custom-stickers.php">
-                            <div class="image">
-                                <img src="/assets/Rectangle stickers.png" srcset="" width="200">
+                        <div class="row">
+                            <div class="col-xl-3 col-md-4 col-sm-4 " style="text-align: center;margin: auto;">
+                                <img src="assets/made/ink.webp" alt="ink" style="width: 100%;" class="layersimg layers">
                             </div>
-                                <p class="regular">RECTANGLE STICKERS</p>
-                            </a>
+                            <div class="col-xl-9" style="margin:auto;">
+                                <h6 style="text-align: left;color:#f86624;">INK LAYER</h6>
+                                
+                                <p class="VideoText font-light" style="font-size: .9rem;">We use Eco friendly environmentally safe latex inks.  Our inks are Green Guard Certified which also produce rich vibrant colors.</p>
+                            </div>
                         </div>
-                        
+
+                        <div class="row">
+                            <div class="col-xl-3 col-md-4 col-sm-4 " style="text-align: center;margin: auto;">
+                                <img src="assets/made/vinyl.webp" alt="adhesive"  style="width: 100%;" class="layersimg layers">
+                            </div>
+                            <div class="col-xl-9" style="margin:auto;">
+                                <h6 style="text-align: left;color:#f86624;">PRINTABLE VINYL</h6>
+                                
+                                <p class="VideoText font-light" style="font-size: .9rem;">The 5 year durability of our pure white premium vinyl keeps your stickers looking sharp for years. Our vinyl can be stretched slightly, this helps adhere to curves and odd places.</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xl-3 col-md-4 col-sm-4 " style="text-align: center;margin: auto;">
+                                <img src="assets/made/adhesive.webp" alt="adhesive"  style="width: 100%;" class="layersimg layers">
+                            </div>
+                            <div class="col-xl-9" style="margin:auto;">
+                                <h6 style="text-align: left;color:#f86624;">WATERPROOF ADHESIVE</h6>
+                                
+                                <p class="VideoText font-light" style="font-size: .9rem;">Your sticker won’t come off in the rain, snow or the side of a boat! They are dishwasher safe and will last a long time. </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-4 col-sm-4 " style="text-align: center;margin: auto;">
+                                <img src="assets/made/removable.webp" alt="removable" style="width: 100%;" class="layersimg layers">
+                            </div>
+                            <div class="col-xl-9" style="margin:auto;">
+                                <h6 style="text-align: left;color:#f86624;">REMOVABLE BACKING PAPER</h6>
+                                
+                                <p class="VideoText font-light" style="font-size: .9rem;">Easy to peel silicon coated backing paper protects the adhesive side until you’re ready to slap that sticker on your laptop, yeti cup, or anything else your heart desires.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="container_video">
+        <section class="container_video" style="height: 100% !important;padding-bottom: 40px;">
             <div class="container">
-                <div class="videosize">
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <img class="embed-responsive-item" src="/assets/poster.jpg" alt="">
-                        <iframe class="embed-responsive-item" poster="/assets/poster.jpg" src="" allowfullscreen></iframe>
-                      </div>
-                   <!-- <div class="jsx-1954592401 ">
-                        <div class="jsx-1954592401 wistia_responsive_padding">
-                            <div class="jsx-1954592401 wistia_responsive_wrapper">
-                                <div id="wistia_chrome_24" class="w-chrome" style="display: inline-block; height: 270px; line-height: normal; margin: 0px; padding: 0px; position: relative; vertical-align: top; width: 480px; outline: currentcolor none medium; overflow: hidden; box-sizing: content-box;" tabindex="-1">
-                                    <div id="wistia_grid_30_wrapper" style="display: block; width: 480px; height: 270px;">
-                                        <div id="wistia_grid_30_main" style="width: 480px; left: 0px; height: 270px; margin-top: 0px;">
-                                            <div id="wistia_grid_30_center" style="width: 100%; height: 100%;">
-                                                <div class="w-ui-container" style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; opacity: 1;">
-                                                    <div class="w-vulcan-v2 w-css-reset" id="w-vulcan-v2-29" style="box-sizing: border-box; cursor: default; height: 100%; left: 0px; position: absolute; visibility: visible; top: 0px; width: 100%;">
-                                                        <div class="w-vulcan--background w-css-reset" style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%;">
-                                                            <div class="w-css-reset" data-handle="thumbnail">
-                                                                <div>
-                                                                    <div style="height: 100%; left: 0px; opacity: 1; position: absolute; top: 0px; width: 100%; display: block;" class="w-css-reset">
-                                                                        <img class="w-css-reset" srcset="https://embedwistia-a.akamaihd.net/deliveries/c070d424987be2245e9ddb5f8aefd13f4a2d8e44.webp?image_crop_resized=600x338 320w"
-                                                                        src="https://embedwistia-a.akamaihd.net/deliveries/c070d424987be2245e9ddb5f8aefd13f4a2d8e44.webp?image_crop_resized=600x338"
-                                                                            style="height: 270px; left: 0px; position: absolute; top: 0px; width: 480px; clip: auto; display: block; border-color: rgb(0, 0, 0); 
-                                                                            border-style: solid; border-width: 0px; box-sizing: content-box;" alt="Video Thumbnail">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
-                </div>
-           <div class="contentVideo">
-               <h2 class="videoTitle">Free shipping, free online proofs, fast turnaround.</h2>
-               <p class="VideoText">Sticker Mule is the fastest and easiest way to buy custom 
-                    printed products. Order in 60 seconds and we'll turn your designs and illustrations into custom stickers, 
-                    magnets, buttons, labels and packaging in days. We offer free online proofs, free worldwide shipping and super fast turnaround.
-                </p>
+                <img src="assets/Logos.png" alt="bottom" style="width: 100%;">
             </div>
-        </div>
+
+            
+
         </section>
     </main>
-    <footer class="Footer">
-        <div class="container">
-            <div class="links">
-                <nav>
-                    <span>
-                        <a class="link" href="/uses">Uses</a>
-                    </span>
-                    <span>
-                        <a class="link" href="/templates">Templates</a>
-                    </span>
-                    <span>
-                        <a class="link" href="/support">Help</a>
-                    </span>
-                </nav>
-            </div>
-            <div class="interactive">
-                <div>
-                    <a aria-label="Instagram" href="#" rel="noopener noreferrer" target="_blank">
-                        <svg fill="currentColor" height="20" viewBox="0 0 857.1 1000" width="20">
-                            <path d="M571 500q0-59-41-101t-101-42-101 42-42 101 42 101 101 42 101-42 41-101zm77 0q0 91-64 156t-155 64-156-64-64-156 64-156 156-64 155 64 64 156zm61-229q0 21-15 36t-37 15-36-15-15-36 15-36 36-15 37 15 15 36zM429 148H327q-20 0-54 2t-57 5-40 11q-28 11-49 32t-33 49q-6 16-10 40t-6 58-1 53 0 59 0 43 0 43 0 59 1 53 6 58 10 40q12 28 33 49t49 32q16 6 40 11t57 5 54 2 59 0 43 0 42 0 59 0 54-2 58-5 39-11q28-11 50-32t32-49q6-16 10-40t6-58 1-53 0-59 0-43 0-43 0-59-1-53-6-58-10-40q-11-28-32-49t-50-32q-16-6-39-11t-58-5-54-2-59 0-42 0zm428 352q0 128-3 177-5 116-69 180t-179 69q-50 3-177 3t-177-3q-116-6-180-69T3 677q-3-49-3-177t3-177q5-116 69-180t180-69q49-3 177-3t177 3q116 6 179 69t69 180q3 49 3 177z"></path>
-                        </svg>
-                    </a>
-                    <a aria-label="Facebook" href="#" rel="noopener noreferrer" target="_blank">
-                        <svg fill="currentColor" height="20" viewBox="0 0 571.4 1000" width="20">
-                            <path d="M535 7v147h-87q-48 0-65 20t-17 60v106h164l-22 165H366v424H195V505H53V340h142V218q0-104 58-161T408 0q82 0 127 7z"></path>
-                        </svg>
-                    </a>
-                    <a aria-label="Youtube" href="#" rel="noopener noreferrer" target="_blank">
-                        <svg fill="currentColor" height="20" viewBox="0 0 1000 1000" width="20">
-                            <path d="M397 629l270-139-270-141v280zm103-481q94 0 181 3t128 5l41 2 9 1q9 1 13 2t13 2 16 5 16 7 17 11 16 15q4 3 9 10t16 33 15 56q4 36 7 76t3 64v98q1 81-10 162-4 30-14 55t-18 35l-8 9q-7 8-16 15t-17 10-16 7-16 5-13 2-13 2-9 1q-140 11-350 11-115-2-201-4t-111-4l-28-3-20-2q-20-3-30-5t-29-12-31-23q-4-3-9-10t-16-33-15-56q-4-36-7-76t-3-64v-98q-1-81 10-162 4-31 14-55t18-35l8-9q8-9 16-15t17-11 16-7 16-5 13-2 13-2 9-1q140-10 350-10z"></path>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="legal">
-                <div class="footer-legal">
-                    <small class="jsx-4078830720">© 2020<!-- --> <!-- -->AcmeStickers</small>
-                    <a class="link" href="/legal/privacy">Privacy</a>
-                    &nbsp;&amp;&nbsp;
-                    <a class="link" href="/legal/terms">Terms</a>
-                    <span class="siteMapFooter">
-                        <a class="link" href="/sitemap">Site map</a>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <script src="js/jquery-3.5.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="js/bootsnav/bootsnav.js"></script>
-    <script src="js/script.js"></script>
+
+<?php include "footer.php"; ?>     
 </body>
 </html>
-

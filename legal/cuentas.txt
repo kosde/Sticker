@@ -1,0 +1,99 @@
+help@acmestickers.com
+4gd)be5|1$77
+
+info@acmestickers.com
+H5s8v7SeftZkK9J
+
+https://www.twilio.com/console
+(205) 273-9743
++12052739743
+PBbpTri_fhyDgmH6piB-XZVaqekRankxYt1Z4CVC
+
+
+
+ups
+cuenta Y56296 _ AcmeStickers 
+clave de acceso BD9239A4CE45BB55
+AcmeStickers
+AcmeStickers
+734 W. Jefferson Blvd
+DALLAS, TX 75208
+US
+Teléfono: 4697678327
+Dirección de correo electrónico: info@acmestickers.com
+
+
+wordpress
+H5s8v7SeftZkK9J
+
+wordpress+woo
+H5s8v7SeftZkK9J
+
+rating package xml developer guide 
+145
+
+
+checar formulario billing checkout
+
+3 niveles de login
+acomodar el carrito
+separar un poco la imagen en el index
+minimum_border_thickness
+
+
+ftp 77Ebg]+c51f#
+https://websms.labsmobile.com/SY0203/home
+
+
+	<?php if($_SESSION['v_admi'])
+	{
+		?>
+		<h3>ver</h3>
+		<?php
+	}
+	?>
+	<?php if($_SESSION['e_admi'])
+	{
+		?>
+		<h3>editar</h3>
+		<?php
+	}
+	?>
+	<?php if($_SESSION['d_admi'])
+	{
+		?>
+		<h3>eliminar</h3>
+		<?php
+	}
+	?>
+ //lxc14cmh utl3576127-2s
+
+
+https://laurent.qodeinteractive.com/our-menu/
+https://quomodosoft.com/html/dawat/demo/index-heat.html
+https://themeforest.net/checkout/75966007/create_account?_ga=2.95687514.797509535.1619800058-948201985.1604957706
+https://fastia-store-demo.myshopify.com/account/login
+https://demo.templatetrip.com/Opencart/OPC07/OPC202_tomato/OPC03/index.php?route=product/product&product_id=42
+
+--------------------------------------
+same as shipping button 
+en billing y address
+
+checar pop up de notificaciones y mandar sms por default
+
+link en el correo para mandar al dashboard order details
+--------------------------------------
+
+
+
+
+shipping address error se quedan los estados de texas
+checar tazas
+error en tax al agarrar direccion 
+
+
+
+ Identificador de la app de Instagram
+ 518885756119178
+ Clave secreta de la app de Instagram
+ 7e7646ebbc9ec5559ddde9b766e4e782

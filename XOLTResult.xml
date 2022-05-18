@@ -1,0 +1,9 @@
+Request: 
+<?xml version="1.0"?>
+<AccessRequest><AccessLicenseNumber>BD9239A4CE45BB55</AccessLicenseNumber><UserId>RachabSolorzano</UserId><Password>Acme0505!!</Password></AccessRequest>
+<?xml version="1.0"?>
+<RatingServiceSelectionRequest><Request><RequestAction>Rate</RequestAction><RequestOption>Rate</RequestOption></Request><Shipment><Shipper><Name>Name</Name><ShipperNumber/><Address><AddressLine1> </AddressLine1><City/><PostalCode/><CountryCode>MX</CountryCode></Address></Shipper><ShipTo><CompanyName>Company Name</CompanyName><Address><AddressLine1> </AddressLine1><City/><PostalCode/><CountryCode>MX</CountryCode></Address></ShipTo><ShipFrom><CompanyName>Company Name</CompanyName><Address><AddressLine1>734 W. Jefferson Blvd</AddressLine1><City>Dallas</City><StateProvinceCode>TX</StateProvinceCode><PostalCode>75208</PostalCode><CountryCode>US</CountryCode></Address></ShipFrom><Service><Code>02</Code><Description>2nd Day Air</Description></Service><Package><PackagingType><Code>02</Code><Description>UPS Package</Description></PackagingType><PackageWeight><UnitOfMeasurement><Code>LBS</Code></UnitOfMeasurement><Weight>15.2</Weight></PackageWeight></Package></Shipment></RatingServiceSelectionRequest>
+
+Response: 
+<?xml version="1.0"?>
+<RatingServiceSelectionResponse><Response><ResponseStatusCode>0</ResponseStatusCode><ResponseStatusDescription>Failure</ResponseStatusDescription><Error><ErrorSeverity>Hard</ErrorSeverity><ErrorCode>111210</ErrorCode><ErrorDescription>The requested service is unavailable between the selected locations.</ErrorDescription></Error></Response></RatingServiceSelectionResponse>

@@ -1,0 +1,32 @@
+{
+  "name": "acmestickers",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "blueimp-canvas-to-blob": "^3.28.0",
+    "blueimp-file-upload": "^10.31.0",
+    "blueimp-load-image": "^5.14.0",
+    "cloudinary-core": "^2.11.3",
+    "cloudinary-jquery-file-upload": "^2.11.3",
+    "dateformat": "^4.5.1",
+    "jquery": "^3.6.0",
+    "react": "^17.0.1",
+    "react-dropzone-uploader": "^2.11.0",
+    "vue-flag-icon": "^1.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kosde/Sticker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kosde/Sticker/issues"
+  },
+  "homepage": "https://github.com/kosde/Sticker#readme",
+  "description": ""
+}
